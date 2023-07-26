@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="modal()">modal animation click</button>
+    <button onclick="modalremove()">modal animation remove</button>
+    <div id="modal" class="modal">
+
+    </div>
+<style>
+    .modal {
+        visibility: hidden;
+        height: 100px;
+        width: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  -webkit-transition: all .8s linear;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.modal.modal-show {
+    visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  background-color: red;
+}
+</style>
+<script>
+    function modal(){
+        let modal= document.getElementById('modal');
+        modal.className="modal modal-show"
+    }
+    
+    function modalremove(){
+        let modal= document.getElementById('modal');
+        modal.className="modal"
+    }
+</script>
+</body>
+</html>

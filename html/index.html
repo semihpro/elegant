@@ -13,10 +13,10 @@
          <nav>
         <span class="Elegant" id="logo">Elegant</span>
         <ul>
-            <li class="active">Ürünler</li>
-            <li>Hakkımızda</li>
-            <li>Projeler</li>
-            <li>Bize Ulaşın</li>
+            <li class="active"><a href="index.html">Ürünler</a></li>
+            <li><a href="hakkımızda.html">Hakkımızda</a></li>
+            <li><a href="projeler.html">Projeler </a></li>
+            <li><a href="bize_ulasin.html">Bize Ulaşın</a></li>
         </ul>
     </nav>
     </div>
@@ -26,6 +26,9 @@
     </div>
     <div class="banner">
 
+    </div>
+    <div class="page-title">
+        Ürünlerimiz
     </div>
     <div class="container">
          <div>
@@ -48,32 +51,32 @@
        
         
         <div class="grid-container">
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
             </div>
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
             </div>
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
             </div>
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
             </div>
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
             </div>
-            <div class="card text-center">
+            <div class="card bg-gray text-center">
                 <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
                 <button class="btn btn-gray" type="button">Özellikler</button>
@@ -111,21 +114,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-        window.onscroll = function() {scrollFunction()};
-        
-        function scrollFunction() {
-            let navbar = document.getElementsByTagName("nav");
-            let logo = document.getElementById("logo");
-          if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            navbar[0].style.height = `${60}px`;
-            logo.style.fontSize = '24px';
-          } else {
-            navbar[0].style.height = `${100}px`;
-            logo.style.fontSize = '36px';
-          }
-        }
-        </script>
+   <script src="index.js"></script>
 </body>
 </html>

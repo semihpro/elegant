@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Preview</title>
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .image-preview {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .image-container:hover .image-preview {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="../images/_DSC1197 copy - Kopya.jpg" alt="Image" width="200" height="200" onclick="showPreview(this)">
+    <div class="image-preview">
+      <img src="../images/_DSC1197 copy - Kopya.jpg" alt="Image Preview" width="300">
+    </div>
+  </div>
+  <script>
+    function showPreview(imageElement) {
+  const previewContainer = imageElement.parentElement.querySelector('.image-preview');
+  previewContainer.style.display = 'block';
+}
+
+document.addEventListener('click', function(event) {
+  const imageContainers = document.querySelectorAll('.image-container');
+  for (const container of imageContainers) {
+    if (!container.contains(event.target)) {
+      container.querySelector('.image-preview').style.display = 'none';
+    }
+  }
+});
+
+  </script>
+</body>
+</html>
