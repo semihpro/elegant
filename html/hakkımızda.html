@@ -14,9 +14,9 @@
         <span class="Elegant" id="logo">Elegant</span>
         <ul>
             <li><a href="index.html">Ürünler </a></li>
-            <li class="active">Hakkımızda</li>
+            <li class="active"><a href="hakkımızda.html">Hakkımızda</a> </li>
             <li><a href="projeler.html">Projeler </a></li>
-            <li>Bize Ulaşın</li>
+            <li><a href="bize_ulasin.html">Bize Ulaşın</a></li>
         </ul>
     </nav>
     </div>
@@ -126,21 +126,6 @@ büyük mutluluğunu yaşamaktadır.
             </div>
         </div>
     </footer>
-    <script>
-        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-        window.onscroll = function() {scrollFunction()};
-        
-        function scrollFunction() {
-            let navbar = document.getElementsByTagName("nav");
-            let logo = document.getElementById("logo");
-          if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            navbar[0].style.height = `${60}px`;
-            logo.style.fontSize = '24px';
-          } else {
-            navbar[0].style.height = `${100}px`;
-            logo.style.fontSize = '36px';
-          }
-        }
-        </script>
+    <script src="index.js"></script>
 </body>
 </html>

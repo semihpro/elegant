@@ -12,6 +12,7 @@
 }
 .sticky{
     position: sticky;
+    z-index: 100;
     top:0;
 }
 a{
@@ -23,7 +24,7 @@ a{
     height: 300px;
     background-image: url('images/banner.jpeg');
     background-size: cover;
-    background-position: top;
+    background-position: center;
     z-index: 100;
     max-width: 1024px;
     margin-right: auto;
@@ -48,7 +49,6 @@ nav{
     align-items: center;
     top:0;
     transition: 0.4s;
-    opacity: .8;
 }
 nav>ul{
     list-style-type: none;
@@ -73,7 +73,7 @@ nav li:hover{
 nav li a:hover{
   color: #555;
 }
-nav li.active {
+nav li.active a{
     color: #555;
   }
   
@@ -122,7 +122,6 @@ footer{
     }
   }
 .card{
-    background-color: rgb(241, 244, 238);
     border-radius: 8px;
     padding: 8px;
 }
@@ -285,7 +284,7 @@ form{
     font-weight: bold;
     color:#555;
     margin-top: 2em;
-    margin-bottom: 4em;
+    margin-bottom: 2em;
   }
   .grid-gallery{
     display: grid;
@@ -317,3 +316,135 @@ form{
   grid-column: span 2;
   grid-row: span 2;
 }
+
+
+
+/*image gallery start css*/
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+/*image gallery css ends*/
+
+
+.icon-circle{
+  border-radius: 50%;
+  font-size: 6rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.w-100{
+  width: 100%;
+}
+.bg-gray{
+  background-color: rgb(246, 248, 244);
+}
+
+.card p {
+  font-size: 1.5em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Styles for the fullscreen modal */
+.modal {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  -webkit-transition: all .3s linear;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.modal.modal-show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Styles for the fullscreen image */
+#fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}
+
+/* Styles for the close button (optional) */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+/*projeler image hover effects*/
+/*Card component*/
+.hovereffects{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+  /* margin-bottom: 10px; */
+}
+
+.hovereffects img{
+ display: block;
+ position: relative;
+ -webkit-transition: all .4s linear;
+ transition: all .4s linear;
+}
+
+.hovereffects:hover img{
+ -ms-transform: scale(1.1);
+ -webkit-transform: scale(1.1);
+ transform: scale(1.1);
+}
+

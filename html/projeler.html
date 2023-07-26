@@ -10,21 +10,21 @@
 </head>
 <body>
     <div class="sticky bg-logo">
-         <nav>
-        <span class="Elegant" id="logo">Elegant</span>
-        <ul>
-            <li class="active">Ürünler</li>
-            <li>Hakkımızda</li>
-            <li>Projeler</li>
-            <li>Bize Ulaşın</li>
-        </ul>
-    </nav>
+        <nav>
+            <span class="Elegant" id="logo">Elegant</span>
+            <ul>
+                <li><a href="index.html">Ürünler </a></li>
+                <li><a href="hakkımızda.html">Hakkımızda</a></li>
+                <li class="active"><a href="projeler.html">Projeler </a></li>
+                <li><a href="bize_ulasin.html">Bize Ulaşın</a></li>
+            </ul>
+        </nav>
     </div>
    
     <div class="sequare">
             
     </div>
-    <div class="banner">
+    <div class="banner" style="background-image: url('images/pexels-peter-fazekas-905690.jpg');">
 
     </div>
     
@@ -32,19 +32,39 @@
         <div class="page-title">
             Gallery
         </div>
-        
-        <div class="grid-gallery">
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-            <div>  <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">    </div>
-
-           
+        <div class="row">
+            <div class="column">
+                <div class="hovereffects">  <img src="images/salon_1.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/sari.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/3_cember_1.jfif" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/mutfak_3.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+ 
+    
+            </div>
+            <div class="column">
+                <div class="hovereffects">  <img src="images/starwars.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/shamdan_show.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/tavan_1.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>              
+                <div class="hovereffects">  <img src="images/kure_1.jfif" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>              
+            </div>
+            <div class="column">
+                <div class="hovereffects">  <img src="images/salon_2.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/shamdan_show_2.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/kitchen2.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/kure_4.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+            </div>
+            <div class="column">
+                <div class="hovereffects">  <img src="images/tavan_4.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/salon_2.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>
+                <div class="hovereffects">  <img src="images/oturma_odasi.jfif" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>    
+                <div class="hovereffects">  <img src="images/damla_tavan_6.jpg" alt="" srcset="" onclick="showFullscreenImage(this)">    </div>    
+            </div>
         </div>
     </div>
+    <div id="fullscreen-modal" class="modal" onclick="closeFullscreenImage()">
+        <span class="close-button" onclick="closeFullscreenImage()">&times;</span>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image">
+      </div>
     <footer>
         <div class="container">
             <div class="grid-container">
@@ -76,21 +96,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-        window.onscroll = function() {scrollFunction()};
-        
-        function scrollFunction() {
-            let navbar = document.getElementsByTagName("nav");
-            let logo = document.getElementById("logo");
-          if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            navbar[0].style.height = `${60}px`;
-            logo.style.fontSize = '24px';
-          } else {
-            navbar[0].style.height = `${100}px`;
-            logo.style.fontSize = '36px';
-          }
-        }
-        </script>
+    <script src="index.js"></script>
 </body>
 </html>
