@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <div class="sticky bg-logo">
+         <nav>
+        <span class="Elegant" id="logo">Elegant</span>
+        <ul>
+            <li class="active">Ürünler</li>
+            <li>Hakkımızda</li>
+            <li>Projeler</li>
+            <li>Bize Ulaşın</li>
+        </ul>
+    </nav>
+    </div>
+   
+    <div class="sequare">
+            
+    </div>
+    <div class="banner">
+
+    </div>
+    <div class="container">
+         <div>
+            <select id="cars" name="cars">
+            <option value="volvo">Tüm Renkler</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+            </select>
+            <select id="cars" name="cars">
+            <option value="volvo">Tüm Modeller</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+            </select>
+            <button class="btn btn-gray"> Getir <i class="fa fa-search" aria-hidden="true"></i> </button>
+        </div>
+    </div>
+    <div class="container">
+       
+        
+        <div class="grid-container">
+            <div class="card text-center">
+                <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+            <div class="card text-center">
+                <img src="images/pexels-peter-fazekas-905690.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+            <div class="card text-center">
+                <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+            <div class="card text-center">
+                <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+            <div class="card text-center">
+                <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+            <div class="card text-center">
+                <img src="images/pexels-max-rahubovskiy-6058444.jpg" alt="" srcset="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum.</p>
+                <button class="btn btn-gray" type="button">Özellikler</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="grid-container">
+                <div class="map-container">
+                    <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.583372776478!2d30.37550171640944!3d40.77285147932578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ccb2c45d833ddb%3A0xf4c3df33139c1e36!2sELEGANT%20HOME%20PLUS%20AV%C4%B0ZE%20VE%20AYDINLATMA!5e0!3m2!1sen!2str!4v1637675086769!5m2!1sen!2str" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="adress text-center">
+                    <p>İstiklal, Çark Cd.</p>
+                    <p>No: 253, 54100</p>
+                    <p>Serdivan/Sakarya</p>
+                </div>
+                <div class="links">
+                    <a href="">
+                        <!-- Instagram Icon -->
+                        <i class="fa fa-instagram"></i>
+                        Instagram
+                    </a>
+                    <a href="">
+                        <!-- Facebook Icon -->
+                        <i class="fa fa-facebook-official"></i>
+                         Facebook
+                    </a>
+                    <a href="">
+                        <!-- Phone Icon -->
+                        <i class="fa fa-phone"></i>
+                        05349613265
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            let navbar = document.getElementsByTagName("nav");
+            let logo = document.getElementById("logo");
+          if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            navbar[0].style.height = `${60}px`;
+            logo.style.fontSize = '24px';
+          } else {
+            navbar[0].style.height = `${100}px`;
+            logo.style.fontSize = '36px';
+          }
+        }
+        </script>
+</body>
+</html>
