@@ -4,7 +4,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 const Header: React.FC = () => {
   const route = useRouter();
-  const BackGroundImage = ():string =>  route.pathname === '/hakkimizda' ? "images/banner/hakkimizda_banner.jpg" : "images/banner/banner.jpeg";
+  console.log("pathname",route.pathname);
+  const BackGroundImage = ():string =>  {
+    
+    return route.basePath + "/" + (route.pathname === '/hakkimizda' ? "images/banner/hakkimizda_banner.jpg" : "images/banner/banner.jpeg");
+  }
   const address_image= BackGroundImage();
   console.log(JSON.stringify(BackGroundImage()));
   const handleScroll = () => {
