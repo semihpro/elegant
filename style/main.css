@@ -1,0 +1,459 @@
+/*#698393 color offere by Ömer Özer*/
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.sequare{
+    height: 200px;
+    background-color: #193241;
+    
+    width: 100%;
+    z-index: -1;
+}
+.sticky{
+    position: sticky;
+    z-index: 100;
+    top:0;
+}
+a{
+  text-decoration: none;
+}
+.banner{
+    margin-top: -200px;
+    display: block;
+    height: 300px;
+    background-image: url('../public/images/banner/banner.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: 100;
+    max-width: 1024px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.bg-logo{
+    background-color: #193241;
+}
+.container{
+    max-width: 1024px;
+    margin: 0px auto;
+}
+nav{
+    height: 100px;
+    background-color: #193241;
+    max-width: 1024px;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    transition: 0.4s;
+}
+nav>ul{
+    list-style-type: none;
+    display: inline;
+
+}
+nav ul li{
+    display: inline;
+    padding: 10px 20px;
+    color: rgb(239, 243, 246);
+    transition: background-color 0.2s ease;
+    font-weight: 600;
+}
+nav ul li a{
+  color: rgb(239, 243, 246);
+}
+nav li:hover{
+    color: #555;
+    cursor: pointer;
+}
+
+nav li a:hover{
+  color: #555;
+}
+nav li.active a{
+    color: #555;
+  }
+  
+.Elegant{
+    display: inline;
+    color: rgb(233, 242, 242);
+    cursor: pointer;
+    font-size: 36px;
+    font-weight: 700;
+    transition: 0.4s;
+}
+
+footer{
+    background-color: #193241;
+    min-height: 200px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4em;
+}
+
+.grid-container{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Three columns with a minimum width of 200px */
+    gap: 10px; /* Adjust the gap between grid items as needed */
+}
+.grid-container .hovereffects>img{
+  width: 100%;
+  height: auto;
+}
+
+.grid-container-two-column{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr;
+}
+.grid-container-two-column img{
+  border-radius: .5em;
+}
+.about p {
+  font-size: 1.5em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+  @media (min-width: 55em){
+    .grid-container-two-column{
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px; /* Adjust the gap between grid items as needed */
+    }
+  }
+.card{
+    border-radius: 8px;
+    padding: 8px;
+}
+.card>img{
+    border-radius: inherit;
+    width: 100%;
+    object-fit: scale-down;
+    aspect-ratio: 1/0.8;
+}
+.card p {
+    margin: .2rem 1rem;
+}
+
+select{
+    min-width: 200px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+form{
+    margin: 20px 0px;
+}
+.btn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-info{
+    background-color: blue;
+    color:white;
+}
+.btn-info:hover{
+    color: rgb(200, 200, 227);
+    background-color: rgb(66, 66, 178);
+}
+.text-center{
+    text-align: center;
+}
+.btn-gray{
+    background-color: rgb(97, 97, 102);
+    color:white;
+}
+.btn-gray:hover{
+    background-color: rgb(105, 105, 128);
+}
+
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Custom styles for the select container */
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Styling the arrow icon */
+  .custom-select::after {
+    content: '\25BC'; /* Downward arrow character */
+    font-size: 12px;
+    color: #555;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+  }
+  
+  /* Styling when the select box is open */
+  .custom-select select:focus {
+    outline: none;
+    border-color: #6ab4ff;
+    box-shadow: 0 2px 8px rgba(106, 180, 255, 0.4);
+  }
+  
+  /* Hide the default arrow icon in some browsers (e.g., Firefox) */
+  .custom-select select::-ms-expand {
+    display: none;
+  }
+
+  /* Map container */
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for the map container */
+  }
+
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .adress{
+    margin: auto;
+    font-weight: 600;
+    color: #fdf6f6;
+  }
+  .links{
+    margin:auto 0px;
+  }
+  .links a{
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #fdf6f6;
+    padding: .2rem;
+  }
+  .float-left{
+    float: left;
+  }
+  .float-right{
+    float: right;
+  }
+  .float-clear{
+    clear: both;
+  }
+  .margin-auto{
+    margin: auto;
+  }
+  .word-space{
+    word-spacing: .5rem;
+  }
+  .font-size-1-2{
+    font-size: 1.2rem;
+  }
+  .mt-2{
+    margin-top:2em;
+  }
+  .mt-5{
+    margin-top:5em;
+  }
+  .mb-2{
+    margin-bottom:2em;
+  }
+  .mb-5{
+    margin-bottom:5em;
+  }
+  .about>div{
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  .page-title{
+    text-align: center;
+    font-size: 2rem;
+    font-family: Inter;
+    font-weight: bold;
+    color:#555;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  .grid-gallery{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-flow: dense;
+    grid-auto-rows: 200px;
+    vertical-align: middle;
+  }
+  .grid-gallery>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .grid-gallery>div>img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 5;
+  }
+ .grid-gallery .wide {
+  grid-column: spam 2;
+ }
+.grid-gallery .tall {
+  grid-row: span 2;
+}
+.grid-gallery .big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+
+
+/*image gallery start css*/
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+/*image gallery css ends*/
+
+
+.icon-circle{
+  border-radius: 50%;
+  font-size: 6rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.w-100{
+  width: 100%;
+}
+.bg-gray{
+  background-color: rgb(246, 248, 244);
+}
+
+.card p {
+  font-size: 1.5em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Styles for the fullscreen modal */
+.modal {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  -webkit-transition: all .3s linear;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.modal.modal-show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Styles for the fullscreen image */
+#fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}
+
+/* Styles for the close button (optional) */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+/*projeler image hover effects*/
+/*Card component*/
+.hovereffects{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+  /* margin-bottom: 10px; */
+}
+
+.hovereffects img{
+ display: block;
+ position: relative;
+ -webkit-transition: all .4s linear;
+ transition: all .4s linear;
+}
+
+.hovereffects:hover img{
+ -ms-transform: scale(1.1);
+ -webkit-transform: scale(1.1);
+ transform: scale(1.1);
+}
+
+.mouse-pointer{
+  cursor: pointer;
+}
