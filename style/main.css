@@ -457,3 +457,29 @@ form{
 .mouse-pointer{
   cursor: pointer;
 }
+
+/*Breadcrumb usage*/
+/* Add this CSS to a separate CSS file or use CSS-in-JS solution */
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item:not(.active)::after {
+  content: '/';
+  margin: 0 5px;
+}
+
+.breadcrumb-item.active {
+  font-weight: bold;
+  color: #555;
+}
+
+ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
