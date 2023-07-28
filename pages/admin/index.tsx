@@ -1,8 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
-import axios from "axios";
-import path from "path";
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import Breadcrumb from "../../components/Breadcrumb";
 
 interface Props {
   dirs: string[];
@@ -12,7 +11,10 @@ const Home: NextPage<Props> = ({ dirs }) => {
 
   return (
    <Layout>
-    <div className="page-title">Admin Sayfası</div>
+    <div className="page-title">
+    <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Ürünler", link:"/urunler"},]}/>
+    </div>
+   
       <div className="container">
         <ul>
           <li><Link href="/admin/urunler">Ürün Listesi</Link> </li>

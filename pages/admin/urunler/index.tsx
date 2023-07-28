@@ -1,30 +1,53 @@
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
 import path from "path";
+import Layout from "../../../components/Layout";
+import Breadcrumb from "../../../components/Breadcrumb";
+import { Product } from "@prisma/client";
+import prisma from "../../../lib/prisma";
 
-interface Props {
-  dirs: string[];
+type productlist ={
+  list: Array<Product>;
 }
 
-const Home: NextPage<Props> = ({ dirs }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const products = await prisma.product.findMany({
+    include: {
+      brand: {
+        select: {
+          id:true,
+          name: true
+        },
+      },
+      color: {
+        select: {
+          id:true,
+          name: true
+        }
+      }
+    },
+  });
+
+  return {
+    props: { products },
+  };
+};
+
+const Home: NextPage<Product> = ({ products }) => {
 
   return (
-   <div>
-    <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
-            <td>Aciklama</td>
-            <td>Link</td>
-            <td>Alt yazi</td>
-            <td>Icon</td>
-            <td>Icon Sirasi</td>
-            <td>Islemler</td>
-          </tr>
-        </thead>
-      </table>
+    <Layout>
+    <div className="page-title">
+    <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Ürünler", link:"/urunler"},]}/>
     </div>
-   </div>
+  
+    <div>
+      {products.map(item=>{
+        return (<div><span>{item.name}</span></div>)
+      })}
+    </div>
+
+    </Layout>
   );
 };
 
