@@ -1,211 +1,59 @@
 import React from "react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { signOut, useSession } from "next-auth/react";
-
 const Header: React.FC = () => {
-  const router = useRouter();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
-
-  const {data: session, status} = useSession();
-
-  let left = (
-    <div className="left">
-      <Link href="/" legacyBehavior>
-        <a className="bold" data-active={isActive("/")}>
-          Feed
-        </a>
-      </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: #000;
-          display: inline-block;
-        }
-
-        .left a[data-active="true"] {
-          color: gray;
-        }
-
-        a + a {
-          margin-left: 1rem;
-        }
-      `}</style>
-    </div>
-  );
-
-  let right = null;
-
-  if (status === 'loading') {
-    left = (
-      <div className="left">
-        <Link href="/" legacyBehavior>
-          <a className="bold" data-active={isActive("/")}>
-            Feed
-          </a>
-        </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
-      </div>
-    );
-    right = (
-      <div className="right">
-        <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
-  if (!session) {
-    right = (
-      <div className="right">
-        <Link href="/api/auth/signin" legacyBehavior>
-          <a data-active={isActive("/signup")}>Log in</a>
-        </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
-  if (session) {
-    left = (
-      <div className="left">
-        <Link href="/" legacyBehavior>
-          <a className="bold" data-active={isActive("/")}>
-            Feed
-          </a>
-        </Link>
-        <Link href="/drafts" legacyBehavior>
-          <a data-active={isActive("/drafts")}>My drafts</a>
-        </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
-      </div>
-    );
-    right = (
-      <div className="right">
-        <p>
-          {session.user.name} ({session.user.email})
-        </p>
-        <Link href="/create" legacyBehavior>
-          <button>
-            <a>New post</a>
-          </button>
-        </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-
-          button {
-            border: none;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
-  return (
-    <nav>
-      {left}
-      {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem;
-          align-items: center;
-        }
-      `}</style>
+  const route = useRouter();
+  const BackGroundImage = ():string =>  route.pathname === '/hakkimizda' ? "images/banner/hakkimizda_banner.jpg" : "images/banner/banner.jpeg";
+  const address_image= BackGroundImage();
+  console.log(JSON.stringify(BackGroundImage()));
+  const handleScroll = () => {
+    try {
+      let navbar = document.getElementsByTagName("nav");
+      let logo = document.getElementById("logo");
+      let navbar_parent = navbar[0].parentElement;
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        navbar[0].style.height = `${60}px`;
+        logo.style.fontSize = '24px';
+        navbar_parent.style.opacity = '.8';
+      } else {
+        navbar[0].style.height = `${100}px`;
+        logo.style.fontSize = '36px';
+        navbar_parent.style.opacity = '1';
+      }
+    } catch (error) {
+      
+    }
+  };
+  const isActive= (address:string) => address === route.pathname ? "active" : "";
+  useEffect(() => {
+    // Add the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+    // Clean up the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  return <>
+     <div className="sticky bg-logo">
+         <nav>
+        <span className="Elegant" id="logo">Elegant</span>
+        <ul>
+            <li className={isActive('/')}><Link href={'/'}>Ürünler</Link></li>
+            <li className={isActive('/hakkimizda')}><Link href={'/hakkimizda'}>Hakkımızda</Link></li>
+            <li className={isActive('/projeler')}><Link href={'/projeler'}>Projeler</Link></li>
+            <li className={isActive('/bize-ulasin')}><Link href={'/bize-ulasin'}>Bize Ulaşın</Link></li>
+        </ul>
     </nav>
-  );
+    </div>
+   
+    <div className="sequare">
+            
+    </div>
+    <div className="banner" style={{backgroundImage:`url(${BackGroundImage()})`}}>
+      {/* <img src={BackGroundImage()} alt="" style={{width:"100%", height:"100%", borderRadius:"10px"}}/> */}
+    </div>
+    </>
 };
 
 export default Header;
