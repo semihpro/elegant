@@ -32,9 +32,9 @@ const readFile = (
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    await fs.readdir(path.join(process.cwd() + "/public", "/images"));
+    await fs.readdir(path.join(process.cwd() + "/public", "/images", "/urunler"));
   } catch (error) {
-    await fs.mkdir(path.join(process.cwd() + "/public", "/images"));
+    await fs.mkdir(path.join(process.cwd() + "/public", "/images", "/urunler"));
   }
   await readFile(req, true);
   res.json({ done: "ok" });
