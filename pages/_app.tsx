@@ -1,7 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
-import "bootstrap/dist/css/bootstrap.min.css"
-
+//import "bootstrap/dist/css/bootstrap.min.css"
+import "../style/main.css"
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <SessionProvider session={pageProps.session}>
