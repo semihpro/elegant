@@ -4,13 +4,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 const Header: React.FC = () => {
   const route = useRouter();
-  console.log("pathname",route.pathname);
   const BackGroundImage = ():string =>  {
     
     return route.basePath + "/" + (route.pathname === '/hakkimizda' ? "images/banner/hakkimizda_banner.jpg" : "images/banner/banner.jpeg");
   }
   const address_image= BackGroundImage();
-  console.log(JSON.stringify(BackGroundImage()));
   const handleScroll = () => {
     try {
       let navbar = document.getElementsByTagName("nav");
@@ -39,6 +37,7 @@ const Header: React.FC = () => {
     };
   }, []);
   return <>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossOrigin={"anonymous"} referrerPolicy="no-referrer" />
      <div className="sticky bg-logo">
          <nav>
         <span className="Elegant" id="logo">Elegant</span>
