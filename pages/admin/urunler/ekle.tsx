@@ -32,9 +32,9 @@ const Home: NextPage<{props:Props}> = ( props ) => {
     e.preventDefault();
     
     try {
-      const name=document.getElementById('name').value;
-      const colorId=document.getElementById('colorId').value;
-      const brandId=document.getElementById('brandId').value;
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const colorId=(document.getElementById('colorId') as HTMLInputElement).value;
+      const brandId=(document.getElementById('brandId') as HTMLInputElement).value;
       const result = await axios.post('/api/admin/product',{
         name, colorId, brandId
       })
