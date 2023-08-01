@@ -18,10 +18,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Post: React.FC<FileProps> = (props) => {
-  const showFullscreenImage = (imageElement)=> {
+  function showFullscreenImage(imageElement: Event) {
     const modal = document.getElementById('fullscreen-modal');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    fullscreenImage.src = imageElement.target.src;
+    const fullscreenImage = document.getElementById('fullscreen-image') as HTMLImageElement;
+    fullscreenImage.src = (imageElement.target as HTMLImageElement).src;
     modal.className = "modal modal-show";
   }
   
