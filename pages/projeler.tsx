@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ MouseEventHandler } from "react";
 import Layout from "../components/Layout";
 import { GetServerSideProps } from "next";
 import fs from 'fs/promises';
@@ -18,10 +18,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Post: React.FC<FileProps> = (props) => {
-  function showFullscreenImage(imageElement: Event) {
+  const showFullscreenImage: MouseEventHandler<HTMLImageElement> = (Event) => {
     const modal = document.getElementById('fullscreen-modal');
     const fullscreenImage = document.getElementById('fullscreen-image') as HTMLImageElement;
-    fullscreenImage.src = (imageElement.target as HTMLImageElement).src;
+    fullscreenImage.src = (Event.target as HTMLImageElement).src;
     modal.className = "modal modal-show";
   }
   
