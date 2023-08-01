@@ -27,7 +27,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-const Home: NextPage<{props:Props}> = ( props ) => {
+const Home: NextPage<Props> = (props) => {
+  console.log("props",props)
   const handleSubmit = async (e)=>{
     e.preventDefault();
     
