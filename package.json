@@ -6,8 +6,9 @@
   "license": "MIT",
   "author": "",
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "next",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start"
   },
   "dependencies": {
