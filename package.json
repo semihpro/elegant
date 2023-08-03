@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "prisma generate",
     "dev": "next",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
