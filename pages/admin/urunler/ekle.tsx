@@ -8,6 +8,7 @@ import Layout from "../../../components/Layout";
 import Breadcrumb from "../../../components/Breadcrumb";
 import prisma from "../../../lib/prisma";
 import { Brand, Color } from "@prisma/client";
+import Swal from 'sweetalert2'
 
 type Props = {
   Brands: Brand[];
@@ -28,20 +29,22 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 const Home: NextPage<Props> = (props) => {
-  console.log("props",props)
   const handleSubmit = async (e)=>{
     e.preventDefault();
     
     try {
-      const name = (document.getElementById('name') as HTMLInputElement).value;
-      const colorId=(document.getElementById('colorId') as HTMLInputElement).value;
-      const brandId=(document.getElementById('brandId') as HTMLInputElement).value;
+      const name = (document.getElementById('name') as HTMLInputElement);
+      const colorId=(document.getElementById('colorId') as HTMLInputElement);
+      const brandId=(document.getElementById('brandId') as HTMLInputElement);
       const result = await axios.post('/api/admin/product',{
-        name, colorId, brandId
+        name: name.value, colorId: colorId.value, brandId:brandId.value
       })
-        console.log('result',result);
+      Swal.fire({title:'Kayıt İşle', text:'Kayit islemi gerceklestirildi', timer:2000});
+      name.value='';
+      colorId.value='';
+      brandId.value='';
     } catch (err) {
-        console.log(err);
+      Swal.fire('islem gerceklestirilemedi', 'Butun alanlari doldurdugunuzdan emin olunuz','warning');
     }
   }
   return (

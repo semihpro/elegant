@@ -5,6 +5,8 @@ import { Product } from "@prisma/client";
 import prisma from "../../../lib/prisma";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 interface Brand {
   id: number;
@@ -46,6 +48,39 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Home: NextPage<{products:productlist}> = ({ products }) => {
   const route = useRouter();
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: 'Emin misin?',
+      text: "Silinen veri geri alinamaz!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText:'iptal et',
+      confirmButtonText: 'Evet, devam et!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const result = await axios.delete(`/api/admin/product/${id}`);
+          await Swal.fire(
+            'Silme basarili!',
+            'Silme isleminiz gerceklestiridi.',
+            'success'
+          )
+          window.location.reload();
+        } catch (error) {
+          await Swal.fire(
+            'Silme basarisiz!',
+            'Silme isleminiz gerceklestirilemedi.',
+            'error'
+          )
+          console.log(`kayit basarisiz`,error);
+        }
+      }
+    })
+   
+    
+  }
   return (
     <Layout>
     <div className="page-title">
@@ -73,8 +108,8 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
             <img src={"/"+item.image_path1} alt="" width={"25px"} height={"25px"}/>
             </div>
           <div className="col col-5" data-label="Payment Status"> 
-            <i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Ürün Düzenle</span></i> 
-            <i className="fa fa-trash tooltip mouse-pointer color-red" aria-hidden="true"> <span className="tooltiptext">Ürünü Sil</span></i>
+            <Link href={`/admin/urunler/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Ürün Düzenle</span></i> </Link>
+            <i onClick={()=>handleDelete(item.id)} className="fa fa-trash tooltip mouse-pointer color-red" aria-hidden="true"> <span className="tooltiptext">Ürünü Sil</span></i>
             </div>
           </li>)
       })}
