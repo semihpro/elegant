@@ -7,10 +7,16 @@ generator client {
 //   provider = "sqlite"
 //   url      = "file:./dev.db"
 // }
+// datasource db {
+//   provider = "mysql"
+//   url = "mysql://mxyvsbrwmwp44d2g4xhh:pscale_pw_9Ti2SEZqzakHo07xikElnyshCRwpJR7gknyayhGDnD4@aws.connect.psdb.cloud/elegant?sslaccept=strict"
+//   shadowDatabaseUrl = "mysql://1oy7a5ybj33rv9vminwd:pscale_pw_4nvBwoANn6WFKzFN2dkBjZcpL4D1KO2SfvkiICPfHN7@aws.connect.psdb.cloud/elegant?sslaccept=strict"
+// }
 datasource db {
-  provider = "mysql"
-  url = "mysql://mxyvsbrwmwp44d2g4xhh:pscale_pw_9Ti2SEZqzakHo07xikElnyshCRwpJR7gknyayhGDnD4@aws.connect.psdb.cloud/elegant?sslaccept=strict"
-  shadowDatabaseUrl = "mysql://1oy7a5ybj33rv9vminwd:pscale_pw_4nvBwoANn6WFKzFN2dkBjZcpL4D1KO2SfvkiICPfHN7@aws.connect.psdb.cloud/elegant?sslaccept=strict"
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
 }
 
 model Post {
