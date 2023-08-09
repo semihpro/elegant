@@ -9,10 +9,10 @@ generator client {
 // }
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
-  relationMode = "prisma"
+  url = "mysql://mxyvsbrwmwp44d2g4xhh:pscale_pw_9Ti2SEZqzakHo07xikElnyshCRwpJR7gknyayhGDnD4@aws.connect.psdb.cloud/elegant?sslaccept=strict"
+  shadowDatabaseUrl = "mysql://1oy7a5ybj33rv9vminwd:pscale_pw_4nvBwoANn6WFKzFN2dkBjZcpL4D1KO2SfvkiICPfHN7@aws.connect.psdb.cloud/elegant?sslaccept=strict"
 }
+
 model Post {
   id        Int     @id @default(autoincrement())
   title     String
