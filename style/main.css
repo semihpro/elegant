@@ -136,8 +136,11 @@ footer{
     object-fit: scale-down;
     aspect-ratio: 1/0.8;
 }
-.card p {
+.card p,.card i {
     margin: .2rem 1rem;
+}
+.card i{
+  font-size: 2rem;
 }
 
 select{
@@ -615,6 +618,9 @@ h2 small {
 .color-red{
   color:red;
 }
+.color-green{
+  color:green;
+}
 
 /*Form Elements*/
 .form__group {
@@ -674,4 +680,19 @@ h2 small {
 /* reset input */
 .form__field:required, .form__field:invalid {
   box-shadow: none;
+}
+
+.imageupload-image{
+  border-radius:10px;
+  width: 100%;
+  display:block;
+}
+.imageupload{
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+}
+.imageupload i{
+  cursor: pointer;
+  padding: 1rem;
 }

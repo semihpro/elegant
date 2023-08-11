@@ -105,7 +105,7 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
           <div className="col col-2" data-label="Customer Name">{item.name}</div>
           <div className="col col-3" data-label="Amount">{item.brand.name}</div>
           <div className="col col-4" data-label="Payment Status">
-            <img src={"/"+item.image_path1} alt="" width={"25px"} height={"25px"}/>
+            <img src={`/images/product/${item.id}/image_path1/${item.image_path1}`} alt="" width={"25px"} height={"25px"}/>
             </div>
           <div className="col col-5" data-label="Payment Status"> 
             <Link href={`/admin/urunler/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Ürün Düzenle</span></i> </Link>

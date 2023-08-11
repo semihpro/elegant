@@ -4,7 +4,6 @@ import { getSession } from 'next-auth/react'
 import formidable from "formidable";
 import path from "path";
 import fs from "fs/promises";
-import { useRouter } from 'next/router';
 import { Product } from '@prisma/client';
 
 export const config = {
@@ -36,42 +35,61 @@ const readFile = (
   });
 };
 
+async function deleteFolderIfExists(folderPath: string): Promise<void> {
+  try {
+      if (await fs.stat(folderPath)) {
+          await fs.rm(folderPath, { recursive: true });
+      } 
+  } catch (error) {
+      // do nothing
+      //console.error(`Error deleting folder ${folderPath}: ${error}`);
+  }
+}
+
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {  
-  const {id,target} = req.query;
-  const product:Product = await prisma.product.findFirst({where:{id:Number(id)}});
-  if(!product) {
+  if(!(req.method.toUpperCase()==='POST' || req.method.toUpperCase()==='DELETE')){
     res.json({
-      result:`ok`,
-      status:200
+      result:'bascurdugunuz api sadece post ve delete operasyonlarini destelemektedir!',
+      status:404
     })
   }
-  const folderAdress=path.join(process.cwd() + "/public/images/product/",`${id}`);
-  try {
-    await fs.readdir(folderAdress);
-  } catch (error) {
-    await fs.mkdir(folderAdress);
-  }
-  const result = await readFile(req, true, folderAdress);
-  // if(req.method==='PUT'){
-  //   const result = await prisma.product.update({ where:{id:Number(req.query?.id)},
-  //     data:{
-  //       image_path1 : !image_path1 ? null : String(image_path1),
-  //       image_path2 : !image_path2 ? null : String(image_path2),
-  //       image_path3 : !image_path3 ? null : String(image_path3),
-  //       image_path4 : !image_path4 ? null : String(image_path4),
-  //       image_path5 : !image_path5 ? null : String(image_path5)
-  //     }});
-  //   res.json(result); 
-  // }
+  const {id,target} = req.query;
+  const product:Product = await prisma.product.findFirst({where:{id:Number(id)}});
   let imageTarget = {};
-  imageTarget[target] = result.files.image[0].newFilename;
+  if(!product) {
+    res.json({
+      result:`Aranilan Urun bulunamadi`,
+      status: 504
+    })
+    return;
+  }
+  const folderAdress=path.join(process.cwd() + `/public/images/product/${id}/${target}`);
+  try {
+    await deleteFolderIfExists(folderAdress);
+    //await fs.readdir(folderAdress);
+    await fs.mkdir(folderAdress,{recursive:true});
+  } catch (error) {
+    console.log('file operations error', error);
+  }
+  if(req.method === 'DELETE'){
+    imageTarget[String(target)] = null;
+  }else if(req.method==='POST'){
+    const result = await readFile(req, true, folderAdress);
+    try {
+      imageTarget[String(target)] = result.files?.image[0].newFilename;
+    } catch (error) {
+      imageTarget[String(target)] = null;
+    }
+  }
   const updateResult = await prisma.product.update({where:{id:Number(id)},
     data:{
       ...imageTarget
     }
   })
   res.json({
-    result:result,
+    result:updateResult,
     status:200
   })
 }
+
+
