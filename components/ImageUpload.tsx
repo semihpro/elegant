@@ -69,6 +69,7 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         const formData = new FormData();
+        if (result.value instanceof File || typeof result.value === 'string') 
         formData.append('image', result.value);
           
           // Simulate API post method
