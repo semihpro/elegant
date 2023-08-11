@@ -67,10 +67,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   try {
     await deleteFolderIfExists(folderAdress);
     //await fs.readdir(folderAdress);
-    await fs.mkdir(folderAdress,{recursive:true});
   } catch (error) {
     console.log('file operations error', error);
-  }
+  } finally(()=>{
+    await fs.mkdir(folderAdress,{recursive:true});
+  })
   if(req.method === 'DELETE'){
     imageTarget[String(target)] = null;
   }else if(req.method==='POST'){
