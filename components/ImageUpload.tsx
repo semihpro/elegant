@@ -56,7 +56,7 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
       showCancelButton: true,
       confirmButtonText: 'Upload',
       preConfirm: () => {
-        const imageInput = document.getElementById('imageInput');
+        const imageInput = document.getElementById('imageInput') as HTMLInputElement;;
         const selectedImage = imageInput.files[0];
 
         if (selectedImage) {
