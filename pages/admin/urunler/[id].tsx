@@ -111,11 +111,11 @@ const Home: NextPage<ProductProps> = (props) => {
           </div>
           <div className="form__group field">
             <div className="grid-container">
-              <ImageUpload image={{id:productData.id, path:(productData.image_path1? `/images/product/${productData.id}/image_path1/${productData.image_path1}` : `/no-image.jpg`), target:`image_path1`}}/>
-              <ImageUpload image={{id:productData.id, path:(productData.image_path2? `/images/product/${productData.id}/image_path2/${productData.image_path2}` : `/no-image.jpg`), target:`image_path2`}}/>
-              <ImageUpload image={{id:productData.id, path:(productData.image_path3? `/images/product/${productData.id}/image_path3/${productData.image_path3}` : `/no-image.jpg`), target:`image_path3`}}/>
-              <ImageUpload image={{id:productData.id, path:(productData.image_path4? `/images/product/${productData.id}/image_path4/${productData.image_path4}` : `/no-image.jpg`), target:`image_path4`}}/>
-              <ImageUpload image={{id:productData.id, path:(productData.image_path5? `/images/product/${productData.id}/image_path5/${productData.image_path5}` : `/no-image.jpg`), target:`image_path5`}}/>
+              <ImageUpload image={{id:productData.id, path:(productData.image_path1? `/images/product/${productData.image_path1}` : `/no-image.jpg`), target:`image_path1`}}/>
+              <ImageUpload image={{id:productData.id, path:(productData.image_path2? `/images/product/${productData.image_path2}` : `/no-image.jpg`), target:`image_path2`}}/>
+              <ImageUpload image={{id:productData.id, path:(productData.image_path3? `/images/product/${productData.image_path3}` : `/no-image.jpg`), target:`image_path3`}}/>
+              <ImageUpload image={{id:productData.id, path:(productData.image_path4? `/images/product/${productData.image_path4}` : `/no-image.jpg`), target:`image_path4`}}/>
+              <ImageUpload image={{id:productData.id, path:(productData.image_path5? `/images/product/${productData.image_path5}` : `/no-image.jpg`), target:`image_path5`}}/>
             </div>
             <button type="submit" className="btn btn-green">Guncelle <i className="fa fa-refresh" aria-hidden="true"></i></button>  
           </div>

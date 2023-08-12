@@ -63,18 +63,18 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     })
     return;
   }
-  const folderAdress=path.join(process.cwd() , `/public/images/product/${id}/${target}`);
+  const existedFileName = product[String(target)]
+  const folderAdress=path.join(process.cwd() , `/public/images/product`);
   try {
-    await deleteFolderIfExists(folderAdress);
-    await fs.mkdir(folderAdress,{recursive:true});
+    await deleteFolderIfExists(folderAdress+`/${existedFileName}`);
+    //await fs.mkdir(folderAdress,{recursive:true});
     //await fs.readdir(folderAdress);
   } catch (error) {
-    res.json({
-      result:error,
-      status:300
-    })
+    // res.json({
+    //   result:error,
+    //   status:300
+    // })
     console.log('file operations error', error);
-    return;
   } 
   if(req.method === 'DELETE'){
     imageTarget[String(target)] = null;
