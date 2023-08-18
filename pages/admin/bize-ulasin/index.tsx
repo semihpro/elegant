@@ -1,12 +1,13 @@
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
 import path from "path";
+import React from "react";
 
 interface Props {
   dirs: string[];
 }
 
-const Home: NextPage<Props> = ({ dirs }) => {
+const Home: React.FC<Props> = ({ dirs }) => {
 
   return (
    <div>
