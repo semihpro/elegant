@@ -11,7 +11,7 @@ export type CardProps = {
 const Card: React.FC<{ card: CardProps }> = ({ card }) => {
    return (
     <div className="card bg-gray text-center">
-      <img src={`/images/product/${card.image_path1}`} alt=""/>
+      <img src={card.image_path1 ? card.image_path1 : `/no-image.jpg`} alt=""/>
       <p>{card.name}</p>
       <button className="btn btn-gray" type="button">Özellikler</button>
     </div>
