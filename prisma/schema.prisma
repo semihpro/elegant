@@ -115,6 +115,12 @@ model Product {
   color       Color    @relation(fields: [colorId], references: [id], onDelete: Cascade)
 }
 
+model Gallery {
+  id          Int      @id @default(autoincrement())
+  image_path  String
+  image_key   String
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique
