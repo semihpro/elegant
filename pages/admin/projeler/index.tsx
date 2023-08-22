@@ -16,16 +16,14 @@ const Home: NextPage<{gallery:Gallery[]}> = ({gallery}) => {
   return (
     <Layout>
       <div className="page-title">
-      <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Gallery"}]}/>
+      <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Projeler"}]}/>
       </div>
-          <div className="form__group field">
             <div className="grid-container">
               {gallery.map(item=>{
-                return <GalleryImageUpload image={{id:item.id, path:(item.image_path ? item.image_path : `/no-image.jpg`), target:`image_path1`}}/>
+                return <GalleryImageUpload image={{id:item.id, path:(item.image_path ? item.image_path : `/no-image.jpg`)}}/>
               })}
-              
+              <GalleryImageUpload image={{id:0, path:`/no-image.jpg`}}/>
             </div>
-          </div>
     </Layout>  
   
   );

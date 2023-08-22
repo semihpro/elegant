@@ -6,12 +6,11 @@ import Swal from "sweetalert2";
 export type ImageProps = {
   id: number;
   path: string;
-  target: string;
 };
 
 const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
   
-  const handleDelete = async (target)=>{
+  const handleDelete = async ()=>{
     Swal.fire({
       title: 'Delete Image',
       text: 'Are you sure you want to delete this image?',
@@ -22,7 +21,7 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
       cancelButtonColor: '#d33'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`/api/admin/gallery/${image.id}?target=${image.target}`, {
+        fetch(`/api/admin/gallery/${image.id}`, {
           method: 'DELETE'
         })
         .then(response => {
@@ -30,7 +29,8 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
             title: 'Deleted',
             text: 'The item has been deleted.',
             icon: 'success'
-          });
+          })
+          .then(()=>location.reload());
         })
         .catch(er =>{
           Swal.fire({
@@ -47,7 +47,7 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
       }
     });
   }
-  const handleUpload = async (target)=>{
+  const handleUpload = async ()=>{
     Swal.fire({
       title: 'Upload Image',
       html: `
@@ -74,7 +74,8 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
           
           // Simulate API post method
           // Replace this with your actual API endpoint and logic
-          fetch(`/api/admin/gallery/${image.id}`, {
+          const path = image.id ? `/api/admin/gallery/${image.id}` :`/api/admin/gallery` ;
+          fetch(path, {
             method: 'POST',
             body: formData
           })
@@ -100,13 +101,19 @@ const ImageUpload: React.FC<{ image: ImageProps }> = ({ image }) => {
   }
   return (
     <div className="card bg-gray text-center">
-      <img id={image.target} src={image.path} alt={image.target} />
+      <img src={image.path} alt="gallery image" />
       <i className="fa fa-pencil color-green mouse-pointer" aria-hidden="true"
-        onClick={()=>handleUpload(image.target)}
+        onClick={()=>handleUpload()}
       ></i>
-      <i className="fa fa-trash color-red mouse-pointer" aria-hidden="true"
-        onClick={()=>handleDelete(image.target)}
-      ></i>
+      {
+      (image.id !== 0 && image.id !== null) ? 
+      (<i className="fa fa-trash color-red mouse-pointer" aria-hidden="true"
+        onClick={()=>handleDelete()}
+      ></i>)
+    : null 
+
+      }
+      
     </div>
   );
 };

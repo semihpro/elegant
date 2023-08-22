@@ -61,7 +61,7 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const result = await axios.delete(`/api/admin/product/${id}`);
+          const result = await axios.delete(`/api/admin/brand/${id}`);
           await Swal.fire(
             'Silme basarili!',
             'Silme isleminiz gerceklestiridi.',
@@ -108,8 +108,8 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
             <img src={item.image_path1 ? item.image_path1 : `/no-image.jpg`} alt="" width={"25px"} height={"25px"}/>
             </div>
           <div className="col col-5" data-label="Payment Status"> 
-            <Link href={`/admin/urunler/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Ürün Düzenle</span></i> </Link>
-            <i onClick={()=>handleDelete(item.id)} className="fa fa-trash tooltip mouse-pointer color-red" aria-hidden="true"> <span className="tooltiptext">Ürünü Sil</span></i>
+            <Link href={`/admin/markalar/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Marka Düzenle</span></i> </Link>
+            <i onClick={()=>handleDelete(item.id)} className="fa fa-trash tooltip mouse-pointer color-red" aria-hidden="true"> <span className="tooltiptext">Markayi Sil</span></i>
             </div>
           </li>)
       })}

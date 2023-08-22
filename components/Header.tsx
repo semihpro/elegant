@@ -40,7 +40,7 @@ const Header: React.FC = () => {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossOrigin={"anonymous"} referrerPolicy="no-referrer" />
      <div className="sticky bg-logo">
          <nav>
-        <span className="Elegant" id="logo">Elegant</span>
+          <Link type="span" href={'/'} id="logo" className="Elegant">Elegant</Link>
         <ul>
             <li className={isActive('/')}><Link href={'/'}>Ürünler</Link></li>
             <li className={isActive('/hakkimizda')}><Link href={'/hakkimizda'}>Hakkımızda</Link></li>
