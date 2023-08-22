@@ -1,23 +1,23 @@
 import React,{ MouseEventHandler } from "react";
 import Layout from "../components/Layout";
 import { GetServerSideProps } from "next";
-import fs from 'fs/promises';
-import path from "path";
+import { Gallery } from "@prisma/client";
+import prisma from "../lib/prisma";
+// import fs from 'fs/promises';
+// import path from "path";
 
-export type FileProps = {
-  files: Array<string>
-};
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let files = await fs.readdir(path.join(process.cwd() , '/public/images/projeler'),{withFileTypes:true});
-  files = files.filter(x=>x.isFile());
-  let fileNames:Array<string> = files.map(file=>"/images/projeler/"+file.name);
+  // let files = await fs.readdir(path.join(process.cwd() , '/public/images/projeler'),{withFileTypes:true});
+  // files = files.filter(x=>x.isFile());
+  // let fileNames:Array<string> = files.map(file=>"/images/projeler/"+file.name);
+  const galleries:Array<Gallery> = await prisma.gallery.findMany({});
   return {
-    props: { files: fileNames },
+    props: { galleries },
   };
 };
 
-const Post: React.FC<FileProps> = (props) => {
+const Post: React.FC<{galleries:Gallery[]}> = ({galleries}) => {
   const showFullscreenImage: MouseEventHandler<HTMLImageElement> = (Event) => {
     const modal = document.getElementById('fullscreen-modal');
     const fullscreenImage = document.getElementById('fullscreen-image') as HTMLImageElement;
@@ -37,8 +37,8 @@ const Post: React.FC<FileProps> = (props) => {
     <div>
        <div className="page-title">Gallery</div>
       <div className="grid-container">
-         { props.files.map((x,index)=>{
-        return <div key={index} className="hovereffects"> <img src={x} alt="" onClick={showFullscreenImage} className="mouse-pointer"/></div>
+         { galleries.map((item,index)=>{
+        return <div key={index} className="hovereffects"> <img src={item.image_path} alt="" onClick={showFullscreenImage} className="mouse-pointer"/></div>
         })}
       </div>
      
