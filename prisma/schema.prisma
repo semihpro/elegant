@@ -36,9 +36,9 @@ model Account {
   id                 Int     @id @default(autoincrement())
   userId             Int     @map("user_id")
   type               String
-  provider           String
-  providerAccountId  String  @map("provider_account_id")
-  refresh_token      String?
+  provider           String @db.Text @unique(length: 3000)
+  providerAccountId  String @db.Text @unique(length: 3000)
+  refresh_token      String? 
   access_token       String?
   expires_at         Int?
   token_type         String?
@@ -47,9 +47,10 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
+  for                String? @db.LongText
   user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
+  //@@unique([provider, providerAccountId], map: "provider_account_id_unique_idx")
+  //@@unique([providerAccountId])
   @@map("accounts")
 }
 
@@ -120,7 +121,15 @@ model Gallery {
   image_path  String
   image_key   String
 }
-
+model ConnectUs {
+  id            Int       @id @default(autoincrement())
+  icon          String
+  context       String
+  button_text   String    @unique  
+  link          String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+}
 model VerificationToken {
   identifier String
   token      String   @unique
