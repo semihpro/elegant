@@ -61,7 +61,7 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const result = await axios.delete(`/api/admin/brand/${id}`);
+          const result = await axios.delete(`/api/admin/urunler/${id}`);
           await Swal.fire(
             'Silme basarili!',
             'Silme isleminiz gerceklestiridi.',
@@ -95,20 +95,20 @@ const Home: NextPage<{products:productlist}> = ({ products }) => {
       <div className="col col-1">Rengi</div>
       <div className="col col-2">Adı</div>
       <div className="col col-3">Markası</div>
-      <div className="col col-4">Sırası</div>
+      <div className="col col-4">Resim</div>
       <div className="col col-5">İşlem</div>
     </li>
     {
       products.map(item=>{
         return (<li className="table-row" key={item.id}>
-          <div className="col col-1" data-label="Job Id">{item.color.name}</div>
-          <div className="col col-2" data-label="Customer Name">{item.name}</div>
-          <div className="col col-3" data-label="Amount">{item.brand.name}</div>
-          <div className="col col-4" data-label="Payment Status">
+          <div className="col col-1" data-label="Rengi">{item.color.name}</div>
+          <div className="col col-2" data-label="Adi">{item.name}</div>
+          <div className="col col-3" data-label="Markasi">{item.brand.name}</div>
+          <div className="col col-4" data-label="Resim">
             <img src={item.image_path1 ? item.image_path1 : `/no-image.jpg`} alt="" width={"25px"} height={"25px"}/>
             </div>
-          <div className="col col-5" data-label="Payment Status"> 
-            <Link href={`/admin/markalar/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Marka Düzenle</span></i> </Link>
+          <div className="col col-5" data-label="Islem"> 
+            <Link href={`/admin/urunler/${item.id}`}><i className="fa fa-pencil tooltip mouse-pointer" aria-hidden="true"> <span className="tooltiptext">Marka Düzenle</span></i> </Link>
             <i onClick={()=>handleDelete(item.id)} className="fa fa-trash tooltip mouse-pointer color-red" aria-hidden="true"> <span className="tooltiptext">Markayi Sil</span></i>
             </div>
           </li>)

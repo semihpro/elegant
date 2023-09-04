@@ -16,7 +16,7 @@ const Home: NextPage<{gallery:Gallery[]}> = ({gallery}) => {
   return (
     <Layout>
       <div className="page-title">
-      <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Projeler"}]}/>
+      <Breadcrumb items={[{text:"Admin", link:"/admin"}, {text:"Fotograflar"}]}/>
       </div>
             <div className="grid-container">
               {gallery.map(item=>{

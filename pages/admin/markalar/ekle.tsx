@@ -1,13 +1,9 @@
 import { GetServerSideProps, NextPage } from "next";
-import { useState } from "react";
 import axios from "axios";
-import fs from "fs/promises";
-import path from "path";
-import Link from "next/link";
 import Layout from "../../../components/Layout";
 import Breadcrumb from "../../../components/Breadcrumb";
 import prisma from "../../../lib/prisma";
-import { Brand, Color } from "@prisma/client";
+import { Brand } from "@prisma/client";
 import Swal from 'sweetalert2'
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -18,6 +14,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return {props:{brands:[]}};
   }
 }
+
 
 const BrandAdd: NextPage<{}> = () => {
   const handleSubmit = async (e)=>{

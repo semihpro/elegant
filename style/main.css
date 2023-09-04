@@ -20,18 +20,13 @@ a{
   text-decoration: none;
 }
 .banner{
-    margin-top: -200px;
     display: block;
     height: 300px;
     background-image: url('../public/images/banner/banner.jpeg');
     background-size: cover;
     background-position: center;
     z-index: 100;
-    max-width: 1024px;
-    margin-right: auto;
-    margin-left: auto;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
 }
 .bg-logo{
     background-color: #193241;
@@ -41,8 +36,7 @@ a{
     margin: 0px auto;
 }
 nav{
-    height: 100px;
-    background-color: #193241;
+    height: 70px;
     max-width: 1024px;
     margin:auto;
     display: flex;
@@ -65,6 +59,7 @@ nav ul li{
 }
 nav ul li a{
   color: rgb(239, 243, 246);
+  text-shadow: 2px 2px gray;
 }
 nav li:hover{
     color: #555;
@@ -440,7 +435,7 @@ form{
 
 
 
-/*projeler image hover effects*/
+/*fotograflar image hover effects*/
 /*Card component*/
 .hovereffects{
   width: 100%;

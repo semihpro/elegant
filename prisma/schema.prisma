@@ -23,34 +23,24 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int?
-  author    User?   @relation(fields: [authorId], references: [id])
-}
-
 model Account {
   id                 Int     @id @default(autoincrement())
   userId             Int     @map("user_id")
-  type               String
-  provider           String @db.Text @unique(length: 3000)
-  providerAccountId  String @db.Text @unique(length: 3000)
-  refresh_token      String? 
-  access_token       String?
+  type               String @db.Text
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
   expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
-  oauth_token_secret String?
-  oauth_token        String?
+  token_type         String? @db.Text
+  scope              String? @db.Text
+  id_token           String? @db.Text
+  session_state      String? @db.Text
+  oauth_token_secret String? @db.Text
+  oauth_token        String? @db.Text
   for                String? @db.LongText
   user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  //@@unique([provider, providerAccountId], map: "provider_account_id_unique_idx")
-  //@@unique([providerAccountId])
+  @@unique([provider, providerAccountId], map: "provider_account_id_unique_idx")
   @@map("accounts")
 }
 
@@ -63,16 +53,19 @@ model Session {
 
   @@map("sessions")
 }
-
+enum Role {
+  USER
+  ADMIN
+}
 model User {
   id            Int       @id @default(autoincrement())
+  role          Role      @default(USER)
   name          String?
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
-  posts         Post[]
   accounts      Account[]
   sessions      Session[]
 
@@ -85,6 +78,7 @@ model Color {
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
+  @@map("colors")
 }
 
 model Brand {
@@ -93,6 +87,7 @@ model Brand {
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
+    @@map("brands")
 }
 
 model Product {
@@ -114,12 +109,14 @@ model Product {
   updateAt    DateTime @updatedAt @map("updated_at")
   brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
   color       Color    @relation(fields: [colorId], references: [id], onDelete: Cascade)
+  @@map("products")
 }
 
 model Gallery {
   id          Int      @id @default(autoincrement())
   image_path  String
   image_key   String
+  @@map("galleries")
 }
 model ConnectUs {
   id            Int       @id @default(autoincrement())
@@ -129,6 +126,7 @@ model ConnectUs {
   link          String?
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
+  @@map("connectuses")
 }
 model VerificationToken {
   identifier String

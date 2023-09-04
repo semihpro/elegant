@@ -31,7 +31,7 @@ const Home: NextPage<{brands:Brand[]}> = ({ brands }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const result = await axios.delete(`/api/admin/product/${id}`);
+          const result = await axios.delete(`/api/admin/brand/${id}`);
           await Swal.fire(
             'Silme basarili!',
             'Silme isleminiz gerceklestiridi.',

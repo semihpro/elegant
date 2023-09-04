@@ -1,21 +1,10 @@
 -- CreateTable
-CREATE TABLE `Post` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(191) NOT NULL,
-    `content` VARCHAR(191) NULL,
-    `published` BOOLEAN NOT NULL DEFAULT false,
-    `authorId` INTEGER NULL,
-
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
 CREATE TABLE `accounts` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `user_id` INTEGER NOT NULL,
     `type` VARCHAR(191) NOT NULL,
     `provider` VARCHAR(191) NOT NULL,
-    `provider_account_id` VARCHAR(191) NOT NULL,
+    `providerAccountId` VARCHAR(191) NOT NULL,
     `refresh_token` VARCHAR(191) NULL,
     `access_token` VARCHAR(191) NULL,
     `expires_at` INTEGER NULL,
@@ -25,8 +14,9 @@ CREATE TABLE `accounts` (
     `session_state` VARCHAR(191) NULL,
     `oauth_token_secret` VARCHAR(191) NULL,
     `oauth_token` VARCHAR(191) NULL,
+    `for` LONGTEXT NULL,
 
-    UNIQUE INDEX `accounts_provider_provider_account_id_key`(`provider`, `provider_account_id`),
+    UNIQUE INDEX `provider_account_id_unique_idx`(`provider`, `providerAccountId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -56,29 +46,29 @@ CREATE TABLE `users` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Color` (
+CREATE TABLE `colors` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `Color_name_key`(`name`),
+    UNIQUE INDEX `colors_name_key`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Brand` (
+CREATE TABLE `brands` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `Brand_name_key`(`name`),
+    UNIQUE INDEX `brands_name_key`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Product` (
+CREATE TABLE `products` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NULL,
     `color_id` INTEGER NOT NULL,
@@ -96,6 +86,29 @@ CREATE TABLE `Product` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `galleries` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `image_path` VARCHAR(191) NOT NULL,
+    `image_key` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `connectuses` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `icon` VARCHAR(191) NOT NULL,
+    `context` VARCHAR(191) NOT NULL,
+    `button_text` VARCHAR(191) NOT NULL,
+    `link` VARCHAR(191) NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
+
+    UNIQUE INDEX `connectuses_button_text_key`(`button_text`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
