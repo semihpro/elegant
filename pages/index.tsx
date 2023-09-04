@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //import 'bootstrap/dist/css/bootstrap.css'
 import type { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
@@ -44,27 +44,39 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 
 const Blog: React.FC<ProductProps> = (props) => {
+  const [color, setColor] = React.useState(props.colors[0]?.id);
+  const [brand, setBrand] = React.useState(props.brands[0]?.id);
+  const [filteredList, setFilteredList] = React.useState(props.products);
+  useEffect(() => {
+    let filteredListTemp = props.products;
+    if(color !== 0) filteredListTemp = filteredListTemp.filter(p => p.colorId === color);
+    if(brand !== 0) filteredListTemp = filteredListTemp.filter(p => p.brandId === brand);
+    setFilteredList(filteredListTemp);
+  }
+
+  ,[color,brand])
+
   return (
     <Layout>
       <div className="page-title">Ürünler</div>
       <div>
-            <select name="colors">
-            <option value="">Tüm Renkler</option>
+            <select name="colors" value={color} onChange={(e)=>setColor(Number(e.target.value))}>
+            <option value="0">Tüm Renkler</option>
               {props.colors.map((c) => 
-                 <option value={c.id}>{c.name}</option>
+                 <option value={c.id} key={c.id}>{c.name}</option>
               )}
             </select>
-            <select name="brands">
-            <option value="">Tüm Markalar</option>
+            <select name="brands" className="ml-1" value={brand} onChange={(e)=>setBrand(Number(e.target.value))}>
+            <option value="0">Tüm Markalar</option>
               {props.brands.map((b) => 
-                 <option value={b.id}>{b.name}</option>
+                 <option value={b.id} key={b.id}>{b.name}</option>
               )}
             </select>
-            <button className="btn btn-gray"> Getir <i className="fa fa-search" aria-hidden="true"></i> </button>
         </div>
       <div className="grid-container">
-        {props.products.map((p) => (
-            <Card card={p}/>
+        {filteredList.map((p,index) => ( <Card card={p} key={index}/>
+
+           
         ))}
             
       </div>
