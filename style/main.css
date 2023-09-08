@@ -697,3 +697,29 @@ h2 small {
 .ml-1{
   margin-left:1rem;
 }
+
+.image-list{
+  float: left;
+  width: 40px;
+}
+.image-list img{
+  width: 100%;
+}
+.image-show img{
+  max-width: 438px;
+  max-height: 438px;
+  width: 100%;
+  vertical-align: top;
+}
+.image-list ul{
+  list-style-type: none;
+}
+.image-list li{
+  background-color: rgb(199, 184, 184);
+}
+.image-show{
+  float: left;
+}
+.float-clear{
+  clear: both;
+}

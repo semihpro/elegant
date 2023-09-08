@@ -1,7 +1,5 @@
 import React from "react";
-import Router from "next/router";
-import ReactMarkdown from "react-markdown";
-
+import Link from "next/link";
 export type CardProps = {
   id: number;
   name: string;
@@ -9,13 +7,15 @@ export type CardProps = {
 };
 
 const Card: React.FC<{ card: CardProps }> = ({ card }) => {
-   return (
+  return (
     <div className="card bg-gray text-center">
-      <img src={card.image_path1 ? card.image_path1 : `/no-image.jpg`} alt=""/>
+      <img src={card.image_path1 ? card.image_path1 : `/no-image.jpg`} alt="" />
       <p>{card.name}</p>
-      <button className="btn btn-gray" type="button">Özellikler</button>
+      <Link type="button" className="btn btn-gray" href={`/urun/${card.id}`}>
+        Detaylar
+      </Link>
     </div>
-  )
+  );
 };
 
 export default Card;
