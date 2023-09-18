@@ -1,325 +1,364 @@
+@charset "UTF-8";
 /*#698393 color offere by Ömer Özer*/
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+/* Custom styles for the select container */
+/* Styling the arrow icon */
+/* Styling when the select box is open */
+/* Hide the default arrow icon in some browsers (e.g., Firefox) */
+/* Map container */
+/*image gallery start css*/
+/* Create four equal columns that sits next to each other */
+/* Responsive layout - makes a two column-layout instead of four columns */
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/*image gallery css ends*/
+/* Styles for the fullscreen modal */
+/* Styles for the fullscreen image */
+/* Styles for the close button (optional) */
+/*fotograflar image hover effects*/
+/*Card component*/
+/*Breadcrumb usage*/
+/* Add this CSS to a separate CSS file or use CSS-in-JS solution */
+/*Responsive li table starts*/
+/*search and add button top positions*/
+/*Tooltip*/
+/*Form Elements*/
+/* reset input */
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
-.sequare{
-    height: 200px;
-    background-color: #193241;
-    
-    width: 100%;
-    z-index: -1;
+
+.sequare {
+  height: 200px;
+  background-color: #193241;
+  width: 100%;
+  z-index: -1;
 }
-.sticky{
-    position: sticky;
-    z-index: 100;
-    top:0;
+
+.sticky {
+  position: sticky;
+  z-index: 100;
+  top: 0;
 }
-a{
+
+a {
   text-decoration: none;
 }
-.banner{
-    display: block;
-    height: 300px;
-    background-image: url('../public/images/banner/banner.jpeg');
-    background-size: cover;
-    background-position: center;
-    z-index: 100;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-.bg-logo{
-    background-color: #193241;
-}
-.container{
-    max-width: 1024px;
-    margin: 0px auto;
-}
-nav{
-    height: 70px;
-    max-width: 1024px;
-    margin:auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    top:0;
-    transition: 0.4s;
-}
-nav>ul{
-    list-style-type: none;
-    display: inline;
 
+.banner {
+  display: block;
+  height: 300px;
+  background-image: url("../public/images/banner/banner.jpeg");
+  background-size: cover;
+  background-position: center;
+  z-index: 100;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-nav ul li{
-    display: inline;
-    padding: 10px 20px;
-    color: rgb(239, 243, 246);
-    transition: background-color 0.2s ease;
-    font-weight: 600;
+
+.bg-logo {
+  background-color: #193241;
 }
-nav ul li a{
+
+.container {
+  max-width: 1024px;
+  margin: 0px auto;
+}
+
+nav {
+  height: 70px;
+  max-width: 1024px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  transition: 0.4s;
+}
+nav > ul {
+  list-style-type: none;
+  display: inline;
+}
+nav ul li {
+  display: inline;
+  padding: 10px 20px;
+  color: rgb(239, 243, 246);
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+}
+nav ul li a {
   color: rgb(239, 243, 246);
   text-shadow: 2px 2px gray;
 }
-nav li:hover{
-    color: #555;
-    cursor: pointer;
+nav li:hover {
+  color: #555;
+  cursor: pointer;
 }
-
-nav li a:hover{
+nav li a:hover {
   color: #555;
 }
-nav li.active a{
-    color: #555;
-  }
-  
-.Elegant{
-    display: inline;
-    color: rgb(233, 242, 242);
-    cursor: pointer;
-    font-size: 36px;
-    font-weight: 700;
-    transition: 0.4s;
+nav li.active a {
+  color: #555;
 }
 
-footer{
-    background-color: #193241;
-    min-height: 200px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    margin-top: 4em;
+.Elegant {
+  display: inline;
+  color: rgb(233, 242, 242);
+  cursor: pointer;
+  font-size: 36px;
+  font-weight: 700;
+  transition: 0.4s;
 }
 
-.grid-container{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Three columns with a minimum width of 200px */
-    gap: 10px; /* Adjust the gap between grid items as needed */
+footer {
+  background-color: #193241;
+  min-height: 200px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 4em;
 }
-.grid-container .hovereffects>img{
+
+.grid-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+.grid-container .hovereffects > img {
   width: 100%;
   height: auto;
 }
 
-.grid-container-two-column{
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr;
+.grid-container-two-column {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
 }
-.grid-container-two-column img{
-  border-radius: .5em;
+.grid-container-two-column img {
+  border-radius: 0.5em;
 }
+
 .about p {
   font-size: 1.5em;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-  @media (min-width: 55em){
-    .grid-container-two-column{
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px; /* Adjust the gap between grid items as needed */
-    }
-  }
-.card{
-    border-radius: 8px;
-    padding: 8px;
+.about > div {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
-.card>img{
-    border-radius: inherit;
-    width: 100%;
-    object-fit: scale-down;
-    aspect-ratio: 1/0.8;
+
+.card {
+  border-radius: 8px;
+  padding: 8px;
 }
-.card p,.card i {
-    margin: .2rem 1rem;
+.card > img {
+  border-radius: inherit;
+  width: 100%;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  aspect-ratio: 1/0.8;
 }
-.card i{
+.card p {
+  margin: 0.2rem 1rem;
+  font-size: 1.5em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.card i {
+  margin: 0.2rem 1rem;
   font-size: 2rem;
 }
 
-select{
-    min-width: 200px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-top: 8px;
+select {
+  min-width: 200px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 8px;
 }
-form{
-    margin: 20px 0px;
+
+form {
+  margin: 20px 0px;
 }
-.btn{
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
 }
-.btn-info{
-    background-color: blue;
-    color:white;
+
+.btn-info {
+  background-color: blue;
+  color: white;
 }
-.btn-info:hover{
-    color: rgb(200, 200, 227);
-    background-color: rgb(66, 66, 178);
+.btn-info:hover {
+  color: rgb(200, 200, 227);
+  background-color: rgb(66, 66, 178);
 }
-.text-center{
-    text-align: center;
+
+.text-center {
+  text-align: center;
 }
-.btn-gray{
-    background-color: rgb(97, 97, 102);
-    color:white;
+
+.btn-gray {
+  background-color: rgb(97, 97, 102);
+  color: white;
 }
-.btn-gray:hover{
-    background-color: rgb(105, 105, 128);
+.btn-gray:hover {
+  background-color: rgb(105, 105, 128);
 }
-.btn-green{
+
+.btn-green {
   background-color: rgb(59, 96, 55);
-  color:white;
+  color: white;
 }
-.btn-green:hover{
+.btn-green:hover {
   background-color: rgb(67, 95, 64);
 }
 
-
+.custom-select {
+  position: relative;
+  display: inline-block;
+}
 .custom-select select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Custom styles for the select container */
-  .custom-select {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Styling the arrow icon */
-  .custom-select::after {
-    content: '\25BC'; /* Downward arrow character */
-    font-size: 12px;
-    color: #555;
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-  }
-  
-  /* Styling when the select box is open */
-  .custom-select select:focus {
-    outline: none;
-    border-color: #6ab4ff;
-    box-shadow: 0 2px 8px rgba(106, 180, 255, 0.4);
-  }
-  
-  /* Hide the default arrow icon in some browsers (e.g., Firefox) */
-  .custom-select select::-ms-expand {
-    display: none;
-  }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.custom-select select:focus {
+  outline: none;
+  border-color: #6ab4ff;
+  box-shadow: 0 2px 8px rgba(106, 180, 255, 0.4);
+}
+.custom-select select::-ms-expand {
+  display: none;
+}
+.custom-select::after {
+  content: "▼";
+  font-size: 12px;
+  color: #555;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
 
-  /* Map container */
-  .map-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio for the map container */
-  }
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  .map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .adress{
-    margin: auto;
-    font-weight: 600;
-    color: #fdf6f6;
-  }
-  .links{
-    margin:auto 0px;
-  }
-  .links a{
-    display: block;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #fdf6f6;
-    padding: .2rem;
-  }
-  .float-left{
-    float: left;
-  }
-  .float-right{
-    float: right;
-  }
-  .float-clear{
-    clear: both;
-  }
-  .margin-auto{
-    margin: auto;
-  }
-  .word-space{
-    word-spacing: .5rem;
-  }
-  .font-size-1-2{
-    font-size: 1.2rem;
-  }
-  .mt-2{
-    margin-top:2em;
-  }
-  .mt-5{
-    margin-top:5em;
-  }
-  .mb-2{
-    margin-bottom:2em;
-  }
-  .mb-5{
-    margin-bottom:5em;
-  }
-  .about>div{
-    margin-top: 2em;
-    margin-bottom: 2em;
-  }
-  .page-title{
-    text-align: center;
-    font-size: 2rem;
-    font-family: Inter;
-    font-weight: bold;
-    color:#555;
-    margin-top: 2em;
-    margin-bottom: 2em;
-  }
-  .grid-gallery{
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-flow: dense;
-    grid-auto-rows: 200px;
-    vertical-align: middle;
-  }
-  .grid-gallery>div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .grid-gallery>div>img{
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    vertical-align: middle;
-    border-radius: 5;
-  }
- .grid-gallery .wide {
+.adress {
+  margin: auto;
+  font-weight: 600;
+  color: #fdf6f6;
+}
+
+.links {
+  margin: auto 0px;
+}
+.links a {
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #fdf6f6;
+  padding: 0.2rem;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-clear {
+  clear: both;
+  clear: both;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.word-space {
+  word-spacing: 0.5rem;
+}
+
+.font-size-1-2 {
+  font-size: 1.2rem;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.mt-5 {
+  margin-top: 5em;
+}
+
+.mb-2 {
+  margin-bottom: 2em;
+}
+
+.mb-5 {
+  margin-bottom: 5em;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  font-family: Inter;
+  font-weight: bold;
+  color: #555;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.grid-gallery {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
+  grid-auto-rows: 200px;
+  vertical-align: middle;
+}
+.grid-gallery > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid-gallery > div > img {
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  vertical-align: middle;
+  border-radius: 5;
+}
+.grid-gallery .wide {
   grid-column: spam 2;
- }
+}
 .grid-gallery .tall {
   grid-row: span 2;
 }
@@ -328,52 +367,24 @@ form{
   grid-row: span 2;
 }
 
-
-
-/*image gallery start css*/
 .row {
-  display: -ms-flexbox; /* IE10 */
   display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
 .column {
-  -ms-flex: 25%; /* IE10 */
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
 }
-
 .column img {
   margin-top: 8px;
   vertical-align: middle;
   width: 100%;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
-/*image gallery css ends*/
-
-
-.icon-circle{
+.icon-circle {
   border-radius: 50%;
   font-size: 6rem;
   aspect-ratio: 1/1;
@@ -381,20 +392,15 @@ form{
   justify-content: center;
   align-items: center;
 }
-.w-100{
+
+.w-100 {
   width: 100%;
 }
-.bg-gray{
+
+.bg-gray {
   background-color: rgb(246, 248, 244);
 }
 
-.card p {
-  font-size: 1.5em;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* Styles for the fullscreen modal */
 .modal {
   visibility: hidden;
   position: fixed;
@@ -404,9 +410,9 @@ form{
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
-  -webkit-transition: all .3s linear;
+  -webkit-transition: all 0.3s linear;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .modal.modal-show {
@@ -415,7 +421,6 @@ form{
   pointer-events: auto;
 }
 
-/* Styles for the fullscreen image */
 #fullscreen-image {
   max-width: 100%;
   max-height: 100%;
@@ -423,7 +428,6 @@ form{
   display: block;
 }
 
-/* Styles for the close button (optional) */
 .close-button {
   position: absolute;
   top: 10px;
@@ -433,38 +437,26 @@ form{
   cursor: pointer;
 }
 
-
-
-/*fotograflar image hover effects*/
-/*Card component*/
-.hovereffects{
+.hovereffects {
   width: 100%;
   overflow: hidden;
   position: relative;
   text-align: center;
   cursor: default;
-  /* margin-bottom: 10px; */
+}
+.hovereffects img {
+  display: block;
+  position: relative;
+  transition: all 0.4s linear;
+}
+.hovereffects:hover img {
+  transform: scale(1.1);
 }
 
-.hovereffects img{
- display: block;
- position: relative;
- -webkit-transition: all .4s linear;
- transition: all .4s linear;
-}
-
-.hovereffects:hover img{
- -ms-transform: scale(1.1);
- -webkit-transform: scale(1.1);
- transform: scale(1.1);
-}
-
-.mouse-pointer{
+.mouse-pointer {
   cursor: pointer;
 }
 
-/*Breadcrumb usage*/
-/* Add this CSS to a separate CSS file or use CSS-in-JS solution */
 .breadcrumb {
   display: flex;
   list-style: none;
@@ -473,7 +465,7 @@ form{
 }
 
 .breadcrumb-item:not(.active)::after {
-  content: '/';
+  content: "/";
   margin: 0 5px;
 }
 
@@ -489,12 +481,9 @@ ol {
   margin: 0;
 }
 
-
-/*Responsive li table starts*/
 h2 {
   font-size: 26px;
   margin: 20px 0;
-  text-align: center;
 }
 h2 small {
   font-size: 0.5em;
@@ -507,7 +496,6 @@ h2 small {
   justify-content: space-between;
   margin-bottom: 25px;
 }
-
 .responsive-table .table-header {
   background-color: #95a5a6;
   font-size: 14px;
@@ -519,14 +507,11 @@ h2 small {
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
   transition: top 2sec;
 }
-
 .responsive-table .table-row:hover {
   position: relative;
-  top:-5px;
+  top: -5px;
   background-color: #dbdbdb;
-  
 }
-
 .responsive-table .col-1 {
   flex-basis: 10%;
 }
@@ -542,43 +527,17 @@ h2 small {
 .responsive-table .col-5 {
   flex-basis: 15%;
 }
-@media all and (max-width: 767px) {
-  .responsive-table .table-header {
-    display: none;
-  }
-  .responsive-table li {
-    display: block;
-  }
-  .responsive-table .col {
-    flex-basis: 100%;
-  }
-  .responsive-table .col {
-    display: flex;
-    padding: 10px 0;
-  }
-  .responsive-table .col:before {
-    color: #6c7a89;
-    padding-right: 10px;
-    content: attr(data-label);
-    flex-basis: 50%;
-    text-align: right;
-  }
-}
 
-
-/*search and add button top positions*/
-.search_and_add{
+.search_and_add {
   display: flex;
   justify-content: space-between;
 }
 
-/*Tooltip*/
 .tooltip {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted #193241;
 }
-
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
@@ -593,7 +552,6 @@ h2 small {
   left: 50%;
   margin-left: -60px;
 }
-
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -604,20 +562,18 @@ h2 small {
   border-style: solid;
   border-color: transparent transparent #193241 transparent;
 }
-
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-
-.color-red{
-  color:red;
-}
-.color-green{
-  color:green;
+.color-red {
+  color: red;
 }
 
-/*Form Elements*/
+.color-green {
+  color: green;
+}
+
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -637,29 +593,28 @@ h2 small {
   background: transparent;
   transition: border-color 0.2s;
 }
+.form__field::-moz-placeholder {
+  color: transparent;
+}
 .form__field::placeholder {
   color: transparent;
+}
+.form__field:-moz-placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
 }
 .form__field:placeholder-shown ~ .form__label {
   font-size: 1.3rem;
   cursor: text;
   top: 20px;
 }
-
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #9b9b9b;
-}
-
 .form__field:focus {
   padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  -o-border-image: linear-gradient(to right, #11998e, #38ef7d);
+     border-image: linear-gradient(to right, #11998e, #38ef7d);
   border-image-slice: 1;
 }
 .form__field:focus ~ .form__label {
@@ -671,55 +626,121 @@ h2 small {
   color: #11998e;
   font-weight: 700;
 }
-
-/* reset input */
-.form__field:required, .form__field:invalid {
+.form__field:required {
+  box-shadow: none;
+}
+.form__field:invalid {
   box-shadow: none;
 }
 
-.imageupload-image{
-  border-radius:10px;
-  width: 100%;
-  display:block;
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
 }
-.imageupload{
+
+.imageupload-image {
+  border-radius: 10px;
+  width: 100%;
+  display: block;
+}
+
+.imageupload {
   align-items: center;
   text-align: center;
   font-size: 2rem;
 }
-.imageupload i{
+.imageupload i {
   cursor: pointer;
   padding: 1rem;
 }
-.ml-2{
-  margin-left:2rem;
-}
-.ml-1{
-  margin-left:1rem;
+
+.ml-2 {
+  margin-left: 2rem;
 }
 
-.image-list{
-  float: left;
-  width: 40px;
+.ml-1 {
+  margin-left: 1rem;
 }
-.image-list img{
-  width: 100%;
+
+.product {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: stretch;
+  flex-direction: row;
 }
-.image-show img{
+.product .image-container {
+  padding: 0px 1em;
+  flex: 50%;
+  display: flex;
+}
+.product .image-container .image-show img {
   max-width: 438px;
   max-height: 438px;
   width: 100%;
   vertical-align: top;
 }
-.image-list ul{
+.product .image-container .image-list {
+  float: left;
+  width: 40px;
+}
+.product .image-container .image-list img {
+  width: 100%;
+}
+.product .image-container .image-list ul {
   list-style-type: none;
 }
-.image-list li{
+.product .image-container .image-list li {
   background-color: rgb(199, 184, 184);
 }
-.image-show{
-  float: left;
+.product .product-information {
+  flex: 50%;
 }
-.float-clear{
-  clear: both;
+.product .product-information p {
+  margin-bottom: 1em;
 }
+
+@media (min-width: 55em) {
+  .grid-container-two-column {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+  .product .image-container, .product .product-information {
+    flex: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+@media all and (max-width: 767px) {
+  .responsive-table .table-header {
+    display: none;
+  }
+  .responsive-table li {
+    display: block;
+  }
+  .responsive-table .col {
+    flex-basis: 100%;
+    display: flex;
+    padding: 10px 0;
+  }
+  .responsive-table .col:before {
+    color: #6c7a89;
+    padding-right: 10px;
+    content: attr(data-label);
+    flex-basis: 50%;
+    text-align: right;
+  }
+}/*# sourceMappingURL=main.css.map */

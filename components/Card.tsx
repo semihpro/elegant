@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 export type CardProps = {
   id: number;
   name: string;
