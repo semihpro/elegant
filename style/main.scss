@@ -1,4 +1,4 @@
-$color_1: rgb(239, 243, 246);
+$color_1: rgb(255, 255, 255);
 $color_2: #555;
 $color_3: rgb(233, 242, 242);
 $color_4: white;
@@ -59,6 +59,15 @@ $border-color_2: transparent transparent #193241 transparent;
 	margin: 0px;
 	box-sizing: border-box;
 }
+body{
+	min-width: 670px;
+}
+#__next>div{ 
+	display:flex; 
+	flex-direction:column; 
+	min-height: 100vh;
+	justify-content: space-between;
+}
 .sequare {
 	height: 200px;
 	background-color: $background-color_1;
@@ -90,6 +99,9 @@ a {
 	margin: 0px auto;
 }
 nav {
+	.icon{
+		display: none;
+	}
 	height: 70px;
 	max-width: 1024px;
 	margin: auto;
@@ -112,6 +124,7 @@ nav {
 			a {
 				color: $color_1;
 				text-shadow: 2px 2px gray;
+				font-size: 1.25em;
 			}
 		}
 	}
@@ -141,6 +154,7 @@ nav {
 	transition: 0.4s;
 }
 footer {
+	width: 100%;
 	background-color: $background-color_1;
 	min-height: 200px;
 	padding-top: 4px;
@@ -160,10 +174,7 @@ footer {
 		}
 	}
 }
-.grid-container-two-column {
-	display: grid;
-	grid-auto-flow: column;
-	grid-template-columns: 1fr;
+.about {
 	img {
 		border-radius: .5em;
 	}
@@ -196,7 +207,7 @@ footer {
 	}
 	i {
 		margin: .2rem 1rem;
-		font-size: 2rem;
+		font-size: 1em;
 	}
 }
 select {
@@ -686,6 +697,7 @@ h2 {
 			}
 			li {
 				background-color: $background-color_14;
+				margin-bottom: 0.2rem;
 			}
 		}
 	}
@@ -694,12 +706,6 @@ h2 {
 		p{
 			margin-bottom: 1em;
 		}
-	}
-}
-@media (min-width: 55em) {
-	.grid-container-two-column {
-		grid-template-columns: 1fr 1fr;
-		grid-gap: 20px;
 	}
 }
 @media screen and (max-width: 800px) {
@@ -714,7 +720,7 @@ h2 {
 		}
 	}
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
 	.column {
 		-ms-flex: 100%;
 		flex: 100%;

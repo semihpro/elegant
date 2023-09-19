@@ -25,14 +25,14 @@ const Header: React.FC = () => {
       let logo = document.getElementById("logo");
       let navbar_parent = navbar[0].parentElement;
       if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
+        document.body.scrollTop > 70 ||
+        document.documentElement.scrollTop > 70
       ) {
         navbar[0].style.height = `${60}px`;
         logo.style.fontSize = "24px";
         navbar_parent.style.opacity = ".8";
       } else {
-        navbar[0].style.height = `${100}px`;
+        navbar[0].style.height = `${70}px`;
         logo.style.fontSize = "36px";
         navbar_parent.style.opacity = "1";
       }
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
     };
   }, []);
   return (
-    <>
+    <div>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -61,37 +61,41 @@ const Header: React.FC = () => {
         className="banner"
         style={{ backgroundImage: `url(${BackGroundImage()})` }}
       >
-        <nav className="sticky">
-          <Link type="span" href={"/"} id="logo" className="Elegant">
-            Elegant
-          </Link>
-          <ul>
-            <li className={isActive("/")}>
-              <Link href={"/"}>Ürünler</Link>
-            </li>
-            <li className={isActive("/hakkimizda")}>
-              <Link href={"/hakkimizda"}>Hakkımızda</Link>
-            </li>
-            <li className={isActive("/fotograflar")}>
-              <Link href={"/fotograflar"}>Fotograflar</Link>
-            </li>
-            <li className={isActive("/bize-ulasin")}>
-              <Link href={"/bize-ulasin"}>Bize Ulaşın</Link>
-            </li>
-            {session ? (
-              <li
-                onClick={handleSignOut}
-                style={{ cursor: "pointer" }}
-              >
-                <i className="fa fa-sign-out" aria-hidden="true"></i>{" "}
-                {session?.user?.name} Cikis
-              </li>
-            ) : null}
-          </ul>
-        </nav>
         {/* <img src={BackGroundImage()} alt="" style={{width:"100%", height:"100%", borderRadius:"10px"}}/> */}
       </div>
-    </>
+      <div className="sticky" style={{ backgroundColor: "darkgray" }}>
+        <div className="container">
+          <nav id="navbar">
+            <Link type="span" href={"/"} id="logo" className="Elegant">
+              Elegant
+            </Link>
+            <ul>
+              <li className={isActive("/")}>
+                <Link href={"/"}>Ürünler</Link>
+              </li>
+              <li className={isActive("/hakkimizda")}>
+                <Link href={"/hakkimizda"}>Hakkımızda</Link>
+              </li>
+              <li className={isActive("/fotograflar")}>
+                <Link href={"/fotograflar"}>Fotograflar</Link>
+              </li>
+              <li className={isActive("/bize-ulasin")}>
+                <Link href={"/bize-ulasin"}>Bize Ulaşın</Link>
+              </li>
+              {session ? (
+                <li onClick={handleSignOut} style={{ cursor: "pointer" }}>
+                  <i className="fa fa-sign-out" aria-hidden="true"></i>{" "}
+                  {session?.user?.name} Cikis
+                </li>
+              ) : null}
+              <li className="icon">
+                <i className="fa fa-bars"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
   );
 };
 

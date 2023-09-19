@@ -28,6 +28,17 @@
   box-sizing: border-box;
 }
 
+body {
+  min-width: 670px;
+}
+
+#__next > div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
 .sequare {
   height: 200px;
   background-color: #193241;
@@ -74,6 +85,9 @@ nav {
   top: 0;
   transition: 0.4s;
 }
+nav .icon {
+  display: none;
+}
 nav > ul {
   list-style-type: none;
   display: inline;
@@ -81,13 +95,14 @@ nav > ul {
 nav ul li {
   display: inline;
   padding: 10px 20px;
-  color: rgb(239, 243, 246);
+  color: rgb(255, 255, 255);
   transition: background-color 0.2s ease;
   font-weight: 600;
 }
 nav ul li a {
-  color: rgb(239, 243, 246);
+  color: rgb(255, 255, 255);
   text-shadow: 2px 2px gray;
+  font-size: 1.25em;
 }
 nav li:hover {
   color: #555;
@@ -110,6 +125,7 @@ nav li.active a {
 }
 
 footer {
+  width: 100%;
   background-color: #193241;
   min-height: 200px;
   padding-top: 4px;
@@ -129,12 +145,7 @@ footer {
   height: auto;
 }
 
-.grid-container-two-column {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr;
-}
-.grid-container-two-column img {
+.about img {
   border-radius: 0.5em;
 }
 
@@ -167,7 +178,7 @@ footer {
 }
 .card i {
   margin: 0.2rem 1rem;
-  font-size: 2rem;
+  font-size: 1em;
 }
 
 select {
@@ -695,6 +706,7 @@ h2 small {
 }
 .product .image-container .image-list li {
   background-color: rgb(199, 184, 184);
+  margin-bottom: 0.2rem;
 }
 .product .product-information {
   flex: 50%;
@@ -703,12 +715,6 @@ h2 small {
   margin-bottom: 1em;
 }
 
-@media (min-width: 55em) {
-  .grid-container-two-column {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-  }
-}
 @media screen and (max-width: 800px) {
   .column {
     flex: 50%;
@@ -718,7 +724,7 @@ h2 small {
     flex: 100%;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
   .column {
     flex: 100%;
     max-width: 100%;
