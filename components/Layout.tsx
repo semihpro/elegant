@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 import Header from "./Header";
-import Footer from "./Footer"
+import Footer from "./Footer";
+import Loading from "./Loading";
 type Props = {
   children: ReactNode;
 };
@@ -10,10 +11,10 @@ const Layout: React.FC<Props> = (props) => (
     <Header />
     <div className="layout">
       <div className="container">
-        {props.children}
+        <Suspense fallback={<Loading />}>{props.children}</Suspense>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 );
 
