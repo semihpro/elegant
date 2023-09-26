@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../../components/Layout";
 import { GetServerSideProps } from "next";
 import prisma from "../../lib/prisma";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -38,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Post: React.FC<ProductProps> = (props) => {
   const [selectedImage, setSelectedImage] = React.useState(props.imagePaths[0]);
   return (
-    <Layout>
+    <>
       <div className="container">
         <div className="page-title">
           <Breadcrumb
@@ -77,7 +76,7 @@ const Post: React.FC<ProductProps> = (props) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

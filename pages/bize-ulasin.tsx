@@ -1,7 +1,5 @@
 import React from "react";
-import Layout from "../components/Layout";
 import { ConnectUs } from "@prisma/client";
-import { PostProps } from "../components/Post";
 import type { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 
@@ -15,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Post: React.FC<{ connectUs: ConnectUs[] }> = (props) => {
   return (
-    <Layout>
+    <>
       <div className="page-title">Bize Ulasin</div>
       <div className="grid-container">
         {props.connectUs.map((connectUs) => (
@@ -30,7 +28,7 @@ const Post: React.FC<{ connectUs: ConnectUs[] }> = (props) => {
           </div>
         ))}
       </div>
-    </Layout>
+    </>
   );
 };
 

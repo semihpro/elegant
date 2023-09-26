@@ -1,10 +1,5 @@
 import React from "react";
-import { GetServerSideProps } from "next";
-import ReactMarkdown from "react-markdown";
-import Layout from "../components/Layout";
-import Router from "next/router";
 import { PostProps } from "../components/Post";
-import prisma from "../lib/prisma";
 import { useSession } from "next-auth/react";
 
 const Post: React.FC<PostProps> = (props) => {
@@ -20,7 +15,7 @@ const Post: React.FC<PostProps> = (props) => {
   }
 
   return (
-    <Layout>
+    <>
       <div className="container">
         <div className="about">
           <div className="page-title">Hakkımızda</div>
@@ -105,7 +100,7 @@ const Post: React.FC<PostProps> = (props) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

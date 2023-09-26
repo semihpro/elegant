@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-import Layout from "../../../components/Layout";
 import Breadcrumb from "../../../components/Breadcrumb";
 import { ConnectUs } from "@prisma/client";
 import prisma from "../../../lib/prisma";
@@ -48,7 +47,7 @@ const Home: NextPage<{ connectUs: ConnectUs[] }> = ({ connectUs }) => {
     });
   };
   return (
-    <Layout>
+    <>
       <div className="page-title">
         <Breadcrumb
           items={[{ text: "Admin", link: "/admin" }, { text: "Bize Ulasin" }]}
@@ -77,7 +76,7 @@ const Home: NextPage<{ connectUs: ConnectUs[] }> = ({ connectUs }) => {
           return (
             <li className="table-row" key={item.id}>
               <div className="col col-1" data-label="Icon">
-              <i className={`fa ${item.icon}`}  aria-hidden="true"></i>
+                <i className={`fa ${item.icon}`} aria-hidden="true"></i>
               </div>
               <div className="col col-2" data-label="Aciklama">
                 {item.context}
@@ -111,7 +110,7 @@ const Home: NextPage<{ connectUs: ConnectUs[] }> = ({ connectUs }) => {
           );
         })}
       </ul>
-    </Layout>
+    </>
   );
 };
 

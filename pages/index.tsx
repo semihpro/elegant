@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 //import 'bootstrap/dist/css/bootstrap.css'
 import type { GetServerSideProps } from "next";
-import Layout from "../components/Layout";
 import Card, { CardProps } from "../components/Card";
 import prisma from "../lib/prisma";
 import { Product, Color, Brand } from "@prisma/client";
@@ -56,7 +55,7 @@ const Blog: React.FC<ProductProps> = (props) => {
   }, [color, brand]);
 
   return (
-    <Layout>
+    <>
       <div className="page-title">Ürünler</div>
       <div>
         <select
@@ -90,7 +89,7 @@ const Blog: React.FC<ProductProps> = (props) => {
           <Card card={p} key={index} />
         ))}
       </div>
-    </Layout>
+    </>
   );
 };
 

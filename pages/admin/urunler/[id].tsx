@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-import Layout from "../../../components/Layout";
 import prisma from "../../../lib/prisma";
 import { Color, Brand, Product } from "@prisma/client";
 import Breadcrumb from "../../../components/Breadcrumb";
@@ -83,7 +82,7 @@ const Home: NextPage<ProductProps> = (props) => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="page-title">
         <Breadcrumb
           items={[
@@ -192,7 +191,7 @@ const Home: NextPage<ProductProps> = (props) => {
           </button>
         </div>
       </form>
-    </Layout>
+    </>
   );
 };
 

@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
-function returnAfter5SecondPromise(): Promise<Number[]> {
-  return new Promise<any>((resolve) => {
-    setTimeout(() => resolve([1, 2, 3]), 5000);
-  });
-}
+import React, { useState, useEffect } from "react";
 
-export default function test() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect");
-    returnAfter5SecondPromise().then((bring) => setData(bring));
+export default async function MyComponent(props) {
+  const data = await new Promise((resolve) => {
+    setTimeout(() => resolve("test"), 2000);
   });
   return (
-    <>
-      <Layout>
-        {data.map((item, index) => {
-          return <div key={index}>{item}</div>;
-        })}
-      </Layout>
-    </>
+    <div>
+      {data.map((item, index) => (
+        <div key={index}>{item}</div>
+      ))}
+    </div>
   );
 }
