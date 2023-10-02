@@ -1,6 +1,8 @@
 const { withSuperjson } = require('next-superjson')
 
-module.exports = withSuperjson()({experimental: {
+module.exports = withSuperjson()({
+  experimental: {
+    appDir:true,
   esmExternals: false, // THIS IS THE FLAG THAT MATTERS
 }})
 
