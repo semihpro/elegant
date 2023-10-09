@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 const Header: React.FC = () => {
   async function handleSignOut() {

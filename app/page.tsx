@@ -5,14 +5,14 @@ import type { GetServerSideProps } from "next";
 import Card, { CardProps } from "../components/Card";
 import prisma from "../lib/prisma";
 import { Product, Color, Brand } from "@prisma/client";
-
+import { cache } from "react";
 type ProductProps = {
   colors: Array<Color>;
   brands: Array<Brand>;
   products: Array<Product>;
 };
-
-export const getServerSideProps: GetServerSideProps = async () => {
+export const revalidate = 3600000;
+const getItem = cache(async () => {
   const brands = await prisma.brand.findMany({});
   const colors = await prisma.color.findMany({});
   const products = await prisma.product.findMany({
@@ -37,16 +37,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
     brands,
   };
 
-  return {
-    props: { ...data },
-  };
-};
-const Blog: React.FC<ProductProps> = (props) => {
+  return data;
+});
+export default async function Home() {
+  const data = await getItem();
+  console.log("data", data);
   const [color, setColor] = React.useState(0);
   const [brand, setBrand] = React.useState(0);
-  const [filteredList, setFilteredList] = React.useState(props.products);
+  const [filteredList, setFilteredList] = React.useState(data.products);
   useEffect(() => {
-    let filteredListTemp = props.products;
+    let filteredListTemp = data.products;
     if (color !== 0)
       filteredListTemp = filteredListTemp.filter((p) => p.colorId === color);
     if (brand !== 0)
@@ -64,7 +64,7 @@ const Blog: React.FC<ProductProps> = (props) => {
           onChange={(e) => setColor(Number(e.target.value))}
         >
           <option value="0">Tüm Renkler</option>
-          {props.colors.map((c) => (
+          {data.colors.map((c) => (
             <option value={c.id} key={c.id}>
               {c.name}
             </option>
@@ -77,7 +77,7 @@ const Blog: React.FC<ProductProps> = (props) => {
           onChange={(e) => setBrand(Number(e.target.value))}
         >
           <option value="0">Tüm Markalar</option>
-          {props.brands.map((b) => (
+          {data.brands.map((b) => (
             <option value={b.id} key={b.id}>
               {b.name}
             </option>
@@ -91,6 +91,4 @@ const Blog: React.FC<ProductProps> = (props) => {
       </div>
     </>
   );
-};
-
-export default Blog;
+}
