@@ -11,24 +11,25 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 // datasource db {
 //   provider = "mysql"
 //   url = env("DATABASE_URL")
 //   relationMode = "prisma"
 // }
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  relationMode      = "prisma"
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
   id                 Int     @id @default(autoincrement())
   userId             Int     @map("user_id")
-  type               String @db.Text
-  provider           String
-  providerAccountId  String
+  type               String  @db.Text
+  provider           String  @db.VarChar(191)
+  providerAccountId  String  @db.VarChar(191)
   refresh_token      String? @db.Text
   access_token       String? @db.Text
   expires_at         Int?
@@ -40,9 +41,15 @@ model Account {
   oauth_token        String? @db.Text
   for                String? @db.LongText
   user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId], map: "provider_account_id_unique_idx")
   @@map("accounts")
 }
+
+// 	`provider` varchar(191) NOT NULL,
+// 	`providerAccountId` varchar(191) NOT NULL,
+
+// 	`for` longtext,
 
 model Session {
   id           Int      @id @default(autoincrement())
@@ -53,13 +60,15 @@ model Session {
 
   @@map("sessions")
 }
+
 enum Role {
   USER
   ADMIN
 }
+
 model User {
   id            Int       @id @default(autoincrement())
-  role          Role      @default(USER)
+  //role          Role      @default(USER)
   name          String?
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
@@ -78,6 +87,7 @@ model Color {
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
+
   @@map("colors")
 }
 
@@ -87,7 +97,8 @@ model Brand {
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
-    @@map("brands")
+
+  @@map("brands")
 }
 
 model Product {
@@ -100,34 +111,39 @@ model Product {
   image_path3 String?
   image_path4 String?
   image_path5 String?
-  image_key1 String?
-  image_key2 String?
-  image_key3 String?
-  image_key4 String?
-  image_key5 String?
+  image_key1  String?
+  image_key2  String?
+  image_key3  String?
+  image_key4  String?
+  image_key5  String?
   createdAt   DateTime @default(now()) @map("created_at")
   updateAt    DateTime @updatedAt @map("updated_at")
   brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
   color       Color    @relation(fields: [colorId], references: [id], onDelete: Cascade)
+
   @@map("products")
 }
 
 model Gallery {
-  id          Int      @id @default(autoincrement())
-  image_path  String
-  image_key   String
+  id         Int    @id @default(autoincrement())
+  image_path String
+  image_key  String
+
   @@map("galleries")
 }
+
 model ConnectUs {
-  id            Int       @id @default(autoincrement())
-  icon          String
-  context       String
-  button_text   String    @unique  
-  link          String?
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
+  id          Int      @id @default(autoincrement())
+  icon        String
+  context     String
+  button_text String   @unique
+  link        String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
   @@map("connectuses")
 }
+
 model VerificationToken {
   identifier String
   token      String   @unique
