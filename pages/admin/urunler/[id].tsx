@@ -1,11 +1,11 @@
-import { GetServerSideProps, NextPage } from "next";
-import Layout from "../../../components/Layout";
-import prisma from "../../../lib/prisma";
-import { Color, Brand, Product } from "@prisma/client";
-import Breadcrumb from "../../../components/Breadcrumb";
-import { useState } from "react";
-import Swal from "sweetalert2";
-import ImageUpload from "../../../components/ImageUpload";
+import { GetServerSideProps, NextPage } from 'next';
+import Layout from '../../../components/Layout';
+import prisma from '../../../lib/prisma';
+import { Color, Brand, Product } from '@prisma/client';
+import Breadcrumb from '../../../components/Breadcrumb';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import ImageUpload from '../../../components/ImageUpload';
 
 type ProductProps = {
   colors: Array<Color>;
@@ -41,7 +41,6 @@ export async function getServerSideProps(context) {
     colors,
     brands,
   };
-  console.log(product);
   return {
     props: data,
   };
@@ -61,21 +60,21 @@ const Home: NextPage<ProductProps> = (props) => {
       const result = await fetch(`/api/admin/product/${props.product.id}`, {
         method: `put`,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(productData),
       });
       console.log(result);
       Swal.fire({
-        title: "Guncelleme Islem Sonuc",
-        text: "Islem basarili bir sekilde gerceklestirildi.",
+        title: 'Guncelleme Islem Sonuc',
+        text: 'Islem basarili bir sekilde gerceklestirildi.',
         timer: 2000,
       });
     } catch (err) {
       Swal.fire(
-        "islem gerceklestirilemedi",
-        "Butun alanlari doldurdugunuzdan emin olunuz",
-        "warning"
+        'islem gerceklestirilemedi',
+        'Butun alanlari doldurdugunuzdan emin olunuz',
+        'warning'
       );
     }
 
@@ -87,9 +86,9 @@ const Home: NextPage<ProductProps> = (props) => {
       <div className="page-title">
         <Breadcrumb
           items={[
-            { text: "Admin", link: "/admin" },
-            { text: "Ürünler", link: "/admin/urunler" },
-            { text: "Urun Duzenle" },
+            { text: 'Admin', link: '/admin' },
+            { text: 'Ürünler', link: '/admin/urunler' },
+            { text: 'Urun Duzenle' },
           ]}
         />
       </div>
@@ -105,7 +104,7 @@ const Home: NextPage<ProductProps> = (props) => {
             value={productData.name}
             onChange={handleInputChange}
           />
-          <label htmlFor={"name"} className="form__label">
+          <label htmlFor={'name'} className="form__label">
             Ürün Adı
           </label>
         </div>

@@ -1,7 +1,3 @@
-// generator client {
-//   provider = "prisma-client-js"
-// }
-
 // datasource db {
 //   provider          = "postgresql"
 //   url               = env("POSTGRES_PRISMA_URL")
@@ -12,11 +8,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// datasource db {
-//   provider = "mysql"
-//   url = env("DATABASE_URL")
-//   relationMode = "prisma"
-// }
 datasource db {
   provider          = "mysql"
   url               = env("DATABASE_URL")
@@ -84,6 +75,7 @@ model User {
 model Color {
   id           Int       @id @default(autoincrement())
   name         String?   @unique
+  order_number String    @default(uuid())
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
@@ -94,6 +86,7 @@ model Color {
 model Brand {
   id           Int       @id @default(autoincrement())
   name         String?   @unique
+  order_number String    @default(uuid())
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
   productLists Product[]
@@ -102,44 +95,50 @@ model Brand {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String?
-  colorId     Int      @map("color_id")
-  brandId     Int      @map("brand_id")
-  image_path1 String?
-  image_path2 String?
-  image_path3 String?
-  image_path4 String?
-  image_path5 String?
-  image_key1  String?
-  image_key2  String?
-  image_key3  String?
-  image_key4  String?
-  image_key5  String?
-  createdAt   DateTime @default(now()) @map("created_at")
-  updateAt    DateTime @updatedAt @map("updated_at")
-  brand       Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  color       Color    @relation(fields: [colorId], references: [id], onDelete: Cascade)
+  id           Int      @id @default(autoincrement())
+  name         String?
+  description  String?
+  colorId      Int      @map("color_id")
+  brandId      Int      @map("brand_id")
+  image_path1  String?
+  image_path2  String?
+  image_path3  String?
+  image_path4  String?
+  image_path5  String?
+  image_key1   String?
+  image_key2   String?
+  image_key3   String?
+  image_key4   String?
+  image_key5   String?
+  order_number String   @default(uuid())
+  createdAt    DateTime @default(now()) @map("created_at")
+  updateAt     DateTime @updatedAt @map("updated_at")
+  brand        Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  color        Color    @relation(fields: [colorId], references: [id], onDelete: Cascade)
 
   @@map("products")
 }
 
 model Gallery {
-  id         Int    @id @default(autoincrement())
-  image_path String
-  image_key  String
+  id           Int      @id @default(autoincrement())
+  image_path   String
+  image_key    String
+  order_number String   @default(uuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("galleries")
 }
 
 model ConnectUs {
-  id          Int      @id @default(autoincrement())
-  icon        String
-  context     String
-  button_text String   @unique
-  link        String?
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  id           Int      @id @default(autoincrement())
+  icon         String
+  context      String
+  button_text  String   @unique
+  link         String?
+  order_number String   @default(uuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("connectuses")
 }
@@ -152,3 +151,16 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
+
+// model CompanyInformation {
+//   id             Int     @id @default(autoincrement())
+//   google_map     String
+//   address        String?
+//   instagram_url  String?
+//   facebook_url   String?
+//   whatsup_number String?
+//   phone_number   String?
+//   about_us       String
+
+//   @@map("companyinformation")
+// }
